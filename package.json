@@ -1,0 +1,42 @@
+{
+  "name": "completions-bulk-apikey",
+  "version": "1.0.0",
+  "description": "Bulk API keys for completions.me — free tier: 26 models (claude-opus-4.6, gpt-5.4, gemini-3-pro-preview), no card, no e-mail; the panel advertises unlimited requests. One account per key.",
+  "license": "MIT",
+  "type": "commonjs",
+  "bin": {
+    "completions-bulk-apikey": "cli.js",
+    "completions-bulk-apikey-launcher": "launcher.js"
+  },
+  "main": "cli.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node launcher.js",
+    "mint": "node cli.js"
+  },
+  "keywords": [
+    "api-key",
+    "bulk",
+    "register",
+    "launcher",
+    "completions",
+    "bulk",
+    "apikey"
+  ],
+  "files": [
+    "cdp.js",
+    "chrome-flags.js",
+    "cli.js",
+    "launcher.js",
+    "mint-node.js",
+    "mint.js",
+    "proxy.js",
+    "reconcile.js",
+    "rescue.js",
+    "verify.js",
+    "README.md",
+    "LICENSE"
+  ]
+}

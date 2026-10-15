@@ -1,0 +1,6 @@
+{
+  "at": "2026-10-15T02:16:17.926Z",
+  "base": "https://completions.me",
+  "endpoint": "/api/v1/models",
+  "note": "26 models; see verify.text per account"
+}
