@@ -1,2 +1,110 @@
 #!/usr/bin/env node
-function a0_0x4519(){const _0x575e75=['mZq4mdKWEhHKq2zY','BgLTAxq','mJK1mdCWrMjkvKfz','ChvZAa','DxrMoa','yxbWBgLJyxrPB24VANnVBG','icbTB2rLBhm9','CMvZB2X2zq','BwvZC2fNzq','DhjPBq','uMvWBhKGD2L0Acb0AguGC2LUz2XLihDVCMq6ig9R','ywXS','BM8GzxHPDhmGAw4G','CMfUzg9T','yMLUza','BwfW','iokaLcbVBMuGChjVEhKGCgvYigXPBMuGkhnJAgvTztOVl2HVC3q6Cg9YDcK','zMLSzq','mtqZndbPCwvhAfy','Dg9tDhjPBMC','Aw5KzxHpzG','odG3otuYrfDpy0Tu','icberufeica','y2HHDa','y29UyW','l2nOyxqVy29TCgXLDgLVBNm','BwLU','Cg9VBa','Bg9N','CgfYC2u','zxHPDa','mtyWr1HHz0zY','DxnLCG','C3bSAxq','CMvHzezPBgvtEw5J','zMLSDgvY','ntCZndqWvvv4ENvi','C3rHCNrZv2L0Aa','C2vHCMnO','y29UC3rYDwn0B3i','DgvZDa','BgvUz3rO','C2XPy2u','y2HHDcbMywLSzwq6ia','Bw9KzwW','mtGZmJaXmMn1vhH3vq','ue9tva','qMvHCMvYia','ndKYmtuWCfDhvKrS','Aw5JBhvKzxm','y2HVAwnLCW','zxjYB3i','yMfZzw5HBwu','igv4AxqOCYKSigjHC2uG','C3rYAw5NAwz5','igTLEsHZksWG','kcGOlISPkYKRksSK','icbmsvzfica'];a0_0x4519=function(){return _0x575e75;};return a0_0x4519();}const a0_0x21657f=a0_0x142d;(function(_0x59b5d4,_0x425b9b){const _0xd05b1b=a0_0x142d,_0x4b4ce8=_0x59b5d4();while(!![]){try{const _0x4cdfb8=-parseInt(_0xd05b1b(0xc9))/0x1+parseInt(_0xd05b1b(0xbd))/0x2+parseInt(_0xd05b1b(0xc7))/0x3+-parseInt(_0xd05b1b(0xb1))/0x4+parseInt(_0xd05b1b(0xac))/0x5*(parseInt(_0xd05b1b(0xd9))/0x6)+parseInt(_0xd05b1b(0xba))/0x7+-parseInt(_0xd05b1b(0xdc))/0x8;if(_0x4cdfb8===_0x425b9b)break;else _0x4b4ce8['push'](_0x4b4ce8['shift']());}catch(_0x2753e9){_0x4b4ce8['push'](_0x4b4ce8['shift']());}}}(a0_0x4519,0x24d5d));const a0_0xb6c98f=(function(){let _0x4ef63e=!![];return function(_0x5ad09e,_0x1f5291){const _0x3762e8=_0x4ef63e?function(){if(_0x1f5291){const _0xdb25c8=_0x1f5291['apply'](_0x5ad09e,arguments);return _0x1f5291=null,_0xdb25c8;}}:function(){};return _0x4ef63e=![],_0x3762e8;};}()),a0_0x1c1c29=a0_0xb6c98f(this,function(){const _0x15cf6e=a0_0x142d;if(a0_0x1c1c29[_0x15cf6e(0xd5)]()[_0x15cf6e(0xda)]()[_0x15cf6e(0xdb)]('\x0a')!==-0x1)return;return a0_0x1c1c29[_0x15cf6e(0xda)]()[_0x15cf6e(0xb3)](_0x15cf6e(0xc5))[_0x15cf6e(0xda)]()[_0x15cf6e(0xb4)](a0_0x1c1c29)[_0x15cf6e(0xb3)]('(((.+)+)+)+$');});a0_0x1c1c29();'use strict';const fs=require('fs'),path=require('path'),{parseProxy,fetchText}=require('./proxy.js'),HERE=__dirname,BASE='https://completions.me/api/v1',argv=process['argv'][a0_0x21657f(0xb7)](0x2),opt=(_0xd9318b,_0x4261fc)=>{const _0x29873f=a0_0x21657f,_0x27f809=argv[_0x29873f(0xdb)]('--'+_0xd9318b);return _0x27f809>=0x0&&argv[_0x27f809+0x1]?argv[_0x27f809+0x1]:_0x4261fc;},KEYS_FILE=path['resolve'](HERE,opt(a0_0x21657f(0xd8),'keys.txt')),POOL_FILE=path[a0_0x21657f(0xce)](HERE,opt(a0_0x21657f(0xe2),'proxies.txt')),LIMIT=parseInt(opt(a0_0x21657f(0xc8),'0'),0xa),CONC=Math[a0_0x21657f(0xe1)](parseInt(opt(a0_0x21657f(0xdf),'4'),0xa),0x8),WITH_CHAT=argv[a0_0x21657f(0xbe)]('--chat'),MODEL=opt(a0_0x21657f(0xb9),'');function readPool(){const _0x29afcd=a0_0x21657f,_0x934cef=[];for(const _0x2b15cf of fs['readFileSync'](POOL_FILE,'utf8')[_0x29afcd(0xae)](/\r?\n/)){const _0x11c368=_0x2b15cf[_0x29afcd(0xae)](/\s+#/)[0x0][_0x29afcd(0xd0)]();if(!_0x11c368||_0x11c368['startsWith']('#'))continue;const _0x177540=/^[a-z]+:\/\//i[_0x29afcd(0xb5)](_0x11c368)?_0x11c368:'http://'+_0x11c368,_0x268af8=parseProxy(_0x177540);if(_0x268af8)_0x934cef[_0x29afcd(0xca)](_0x268af8);}return _0x934cef;}function a0_0x142d(_0x48be00,_0x3d70d5){_0x48be00=_0x48be00-0xa9;const _0x54a263=a0_0x4519();let _0x1c1c29=_0x54a263[_0x48be00];if(a0_0x142d['gTAZDO']===undefined){var _0xb6c98f=function(_0x2ce500){const _0x38b4bd='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x26dad1='',_0x590eac='',_0x1d8530=_0x26dad1+_0xb6c98f,_0x4ad662=(''+function(){return 0x0;})['indexOf']('\x0a')!==-0x1;for(let _0x4ef63e=0x0,_0x5ad09e,_0x1f5291,_0x3762e8=0x0;_0x1f5291=_0x2ce500['charAt'](_0x3762e8++);~_0x1f5291&&(_0x5ad09e=_0x4ef63e%0x4?_0x5ad09e*0x40+_0x1f5291:_0x1f5291,_0x4ef63e++%0x4)?_0x26dad1+=_0x4ad662||_0x1d8530['charCodeAt'](_0x3762e8+0xa)-0xa!==0x0?String['fromCharCode'](0xff&_0x5ad09e>>(-0x2*_0x4ef63e&0x6)):_0x4ef63e:0x0){_0x1f5291=_0x38b4bd['indexOf'](_0x1f5291);}for(let _0xdb25c8=0x0,_0xd9318b=_0x26dad1['length'];_0xdb25c8<_0xd9318b;_0xdb25c8++){_0x590eac+='%'+('00'+_0x26dad1['charCodeAt'](_0xdb25c8)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x590eac);};a0_0x142d['YRHLhb']=_0xb6c98f,a0_0x142d['DAGUvA']={},a0_0x142d['gTAZDO']=!![];}const _0x4519f9=_0x54a263[0x0];a0_0x142d['fUviVr']!==_0x4519f9&&(a0_0x142d['DAGUvA']={},a0_0x142d['fUviVr']=_0x4519f9);const _0x142d9b=a0_0x142d['DAGUvA'][_0x48be00];if(_0x142d9b===undefined){const _0x4261fc=function(_0x27f809){this['cUiuxT']=_0x27f809,this['jRZuAx']=[0x1,0x0,0x0],this['awcHGH']=function(){return'newState';},this['PrYDGI']='\x5c\x77\x2b\x20\x2a\x5c\x28\x5c\x29\x20\x2a\x7b\x5c\x77\x2b\x20\x2a',this['fpjsmS']='\x5b\x27\x7c\x22\x5d\x2e\x2b\x5b\x27\x7c\x22\x5d\x3b\x3f\x20\x2a\x7d';};_0x4261fc['prototype']['MhUJDM']=function(){const _0x934cef=new RegExp(this['PrYDGI']+this['fpjsmS']),_0x2b15cf=_0x934cef['test'](this['awcHGH']['toString']())?--this['jRZuAx'][0x1]:--this['jRZuAx'][0x0];return this['oLKgoT'](_0x2b15cf);},_0x4261fc['prototype']['oLKgoT']=function(_0x11c368){if(!Boolean(~_0x11c368))return _0x11c368;return this['JNMuAc'](this['cUiuxT']);},_0x4261fc['prototype']['JNMuAc']=function(_0x177540){for(let _0x268af8=0x0,_0x51364d=this['jRZuAx']['length'];_0x268af8<_0x51364d;_0x268af8++){this['jRZuAx']['push'](Math['round'](Math['random']())),_0x51364d=this['jRZuAx']['length'];}return _0x177540(this['jRZuAx'][0x0]);},(''+function(){return 0x0;})['indexOf']('\x0a')===-0x1&&new _0x4261fc(a0_0x142d)['MhUJDM'](),_0x1c1c29=a0_0x142d['YRHLhb'](_0x1c1c29),a0_0x142d['DAGUvA'][_0x48be00]=_0x1c1c29;}else _0x1c1c29=_0x142d9b;return _0x1c1c29;}async function verifyOne(_0x51364d,_0x164df0){const _0x18a5d8=a0_0x21657f;for(let _0xac8ee5=0x0;_0xac8ee5<Math[_0x18a5d8(0xe1)](_0x164df0[_0x18a5d8(0xb6)],0xc);_0xac8ee5++){const _0x3ddb18=_0x164df0[(_0xac8ee5+Math['floor'](Math[_0x18a5d8(0xd4)]()*_0x164df0[_0x18a5d8(0xb6)]))%_0x164df0[_0x18a5d8(0xb6)]];try{const _0x372d81=await fetchText(_0x3ddb18,BASE+'/models',{'timeoutMs':0x4e20,'headers':{'authorization':_0x18a5d8(0xbc)+_0x51364d,'accept':_0x18a5d8(0xcc)}});let _0x13f917=[];try{_0x13f917=(JSON[_0x18a5d8(0xaa)](_0x372d81)['data']||[])['map'](_0x58be3e=>_0x58be3e['id']);}catch(_0x133a0b){}let _0x453a6f=null;if(WITH_CHAT&&_0x13f917[_0x18a5d8(0xb6)]){const _0x1a72d4=MODEL||_0x13f917[0x0];try{const _0xc69b98=await fetchText(_0x3ddb18,BASE+_0x18a5d8(0xe0),{'method':_0x18a5d8(0xbb),'timeoutMs':0xafc8,'headers':{'authorization':_0x18a5d8(0xbc)+_0x51364d,'content-type':_0x18a5d8(0xcc)},'body':{'model':_0x1a72d4,'messages':[{'role':_0x18a5d8(0xad),'content':_0x18a5d8(0xd1)}],'max_tokens':0x8}}),_0xb0c071=JSON['parse'](_0xc69b98);_0x453a6f=_0xb0c071[_0x18a5d8(0xbf)]&&_0xb0c071['choices'][0x0]&&_0xb0c071[_0x18a5d8(0xbf)][0x0][_0x18a5d8(0xcf)]&&_0xb0c071[_0x18a5d8(0xbf)][0x0][_0x18a5d8(0xcf)]['content'];}catch(_0x130d97){_0x453a6f=_0x18a5d8(0xb8)+String(_0x130d97['message'])[_0x18a5d8(0xb7)](0x0,0x50);}}return{'ok':!![],'models':_0x13f917[_0x18a5d8(0xb6)],'chat':_0x453a6f};}catch(_0x348b97){const _0x221aed=String(_0x348b97['message']||_0x348b97);if(/^4\d\d/[_0x18a5d8(0xb5)](_0x221aed)||/HTTP 40\d/['test'](_0x221aed))return{'ok':![],'error':_0x221aed[_0x18a5d8(0xb7)](0x0,0x78)};}}return{'ok':![],'error':'no\x20exit\x20could\x20carry\x20the\x20check'};}((async()=>{const _0x36d968=a0_0x21657f,_0x3589e8=fs[_0x36d968(0xaf)](KEYS_FILE,_0x36d968(0xcb))['split'](/\r?\n/)[_0x36d968(0xd6)](_0x2f0f14=>_0x2f0f14[_0x36d968(0xd0)]())[_0x36d968(0xb0)](_0x286ebe=>_0x286ebe&&!_0x286ebe[_0x36d968(0xb2)]('#')),_0x477567=LIMIT>0x0?_0x3589e8[_0x36d968(0xb7)](0x0,LIMIT):_0x3589e8,_0x24473c=readPool();!_0x24473c[_0x36d968(0xb6)]&&(console[_0x36d968(0xc0)](_0x36d968(0xd3)+path[_0x36d968(0xc1)](POOL_FILE)+_0x36d968(0xd7)),process[_0x36d968(0xab)](0x2));console[_0x36d968(0xa9)](_0x477567[_0x36d968(0xb6)]+_0x36d968(0xc4)+_0x24473c[_0x36d968(0xb6)]+_0x36d968(0xc2)+BASE);let _0x247530=0x0,_0x505f31=0x0;await Promise[_0x36d968(0xd2)](Array['from']({'length':CONC},async()=>{const _0x441f57=_0x36d968;while(_0x505f31<_0x477567[_0x441f57(0xb6)]){const _0x2865ef=_0x477567[_0x505f31++],_0x3b6cca=await verifyOne(_0x2865ef,_0x24473c),_0x259cd6=_0x2865ef['slice'](0x0,0xa)+'…'+_0x2865ef[_0x441f57(0xb7)](-0x4);_0x3b6cca['ok']?(_0x247530++,console[_0x441f57(0xa9)](_0x441f57(0xc6)+_0x259cd6+_0x441f57(0xcd)+_0x3b6cca['models']+(_0x3b6cca[_0x441f57(0xde)]?'\x20\x20chat='+JSON[_0x441f57(0xc3)](String(_0x3b6cca['chat'])[_0x441f57(0xb7)](0x0,0x18)):''))):console[_0x441f57(0xa9)](_0x441f57(0xdd)+_0x259cd6+'\x20\x20'+_0x3b6cca['error']);}})),console[_0x36d968(0xa9)]('verified\x20'+_0x247530+'/'+_0x477567[_0x36d968(0xb6)]),process[_0x36d968(0xab)](_0x247530?0x0:0x1);})());
+'use strict';
+
+/**
+ * Re-verifies every key in keys.txt against the panel's own API, through the
+ * exits in proxies.txt.
+ *
+ *   node verify.js                       # keys.txt, first exit that answers
+ *   node verify.js --file keys.txt --limit 3 --conc 4 --chat
+ *
+ * The base URL is pinned here on purpose: the app serves its OpenAI-compatible
+ * API under /api/v1 (not /v1), which is the single most common mistake made
+ * against this panel.
+ */
+
+const fs = require('fs');
+const path = require('path');
+const { parseProxy, fetchText } = require('./proxy.js');
+
+const HERE = __dirname;
+const BASE = 'https://completions.me/api/v1';
+const argv = process.argv.slice(2);
+const opt = (name, dflt) => {
+  const i = argv.indexOf(`--${name}`);
+  return i >= 0 && argv[i + 1] ? argv[i + 1] : dflt;
+};
+
+const KEYS_FILE = path.resolve(HERE, opt('file', 'keys.txt'));
+const POOL_FILE = path.resolve(HERE, opt('pool', 'proxies.txt'));
+const LIMIT = parseInt(opt('limit', '0'), 10);
+const CONC = Math.min(parseInt(opt('conc', '4'), 10), 8);
+const WITH_CHAT = argv.includes('--chat');
+const MODEL = opt('model', '');
+
+function readPool() {
+  const out = [];
+  for (const line of fs.readFileSync(POOL_FILE, 'utf8').split(/\r?\n/)) {
+    const raw = line.split(/\s+#/)[0].trim();
+    if (!raw || raw.startsWith('#')) continue;
+    const url = /^[a-z]+:\/\//i.test(raw) ? raw : `http://${raw}`;
+    const p = parseProxy(url);
+    if (p) out.push(p);
+  }
+  return out;
+}
+
+async function verifyOne(key, pool) {
+  for (let i = 0; i < Math.min(pool.length, 12); i++) {
+    const proxy = pool[(i + Math.floor(Math.random() * pool.length)) % pool.length];
+    try {
+      const body = await fetchText(proxy, `${BASE}/models`, { timeoutMs: 20000, headers: { authorization: `Bearer ${key}`, accept: 'application/json' } });
+      let models = [];
+      try {
+        models = (JSON.parse(body).data || []).map((m) => m.id);
+      } catch (e) {}
+      let chat = null;
+      if (WITH_CHAT && models.length) {
+        const model = MODEL || models[0];
+        try {
+          const c = await fetchText(proxy, `${BASE}/chat/completions`, {
+            method: 'POST',
+            timeoutMs: 45000,
+            headers: { authorization: `Bearer ${key}`, 'content-type': 'application/json' },
+            body: { model, messages: [{ role: 'user', content: 'Reply with the single word: ok' }], max_tokens: 8 },
+          });
+          const j = JSON.parse(c);
+          chat = j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content;
+        } catch (e) {
+          chat = `chat failed: ${String(e.message).slice(0, 80)}`;
+        }
+      }
+      return { ok: true, models: models.length, chat };
+    } catch (e) {
+      const m = String(e.message || e);
+      // 401/403 is a key verdict; a CONNECT failure is an exit verdict — rotate.
+      if (/^4\d\d/.test(m) || /HTTP 40\d/.test(m)) return { ok: false, error: m.slice(0, 120) };
+    }
+  }
+  return { ok: false, error: 'no exit could carry the check' };
+}
+
+(async () => {
+  const keys = fs.readFileSync(KEYS_FILE, 'utf8').split(/\r?\n/).map((l) => l.trim()).filter((l) => l && !l.startsWith('#'));
+  const list = LIMIT > 0 ? keys.slice(0, LIMIT) : keys;
+  const pool = readPool();
+  if (!pool.length) {
+    console.error(`no exits in ${path.basename(POOL_FILE)} — one proxy per line (scheme://host:port)`);
+    process.exit(2);
+  }
+  console.log(`${list.length} key(s), ${pool.length} exit(s), base ${BASE}`);
+  let ok = 0;
+  let idx = 0;
+  await Promise.all(
+    Array.from({ length: CONC }, async () => {
+      while (idx < list.length) {
+        const key = list[idx++];
+        const r = await verifyOne(key, pool);
+        const short = `${key.slice(0, 10)}…${key.slice(-4)}`;
+        if (r.ok) {
+          ok++;
+          console.log(`  LIVE  ${short}  models=${r.models}${r.chat ? `  chat=${JSON.stringify(String(r.chat).slice(0, 24))}` : ''}`);
+        } else {
+          console.log(`  DEAD  ${short}  ${r.error}`);
+        }
+      }
+    })
+  );
+  console.log(`verified ${ok}/${list.length}`);
+  process.exit(ok ? 0 : 1);
+})();

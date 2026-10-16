@@ -1,8 +1,8 @@
 # completions-bulk-apikey
 
-Mint accounts and API keys on **[completions.me](https://completions.me)** — one account, one key — and verify every key on the provider's own host. Registration takes a **username and a password** and nothing else: no mailbox, no captcha, no browser.
+**Bulk-create Completions.me accounts with auto-generated API keys — OpenAI-compatible inference + 9Router connector.**
 
-**Repo:** `github.com/F0Rextasy/completions-bulk-apikey`
+[![9Router](https://img.shields.io/badge/9Router-connector-8B5CF6.svg?style=for-the-badge)](#-connect-to-9router)
 
 ## 🤖 Models & free tier
 
@@ -33,10 +33,34 @@ print(client.chat.completions.create(
 ).choices[0].message.content)
 ```
 
+## 🔌 Connect to 9Router
+
+Completions.me is OpenAI-compatible, so register it once and use every key:
+
+```bash
+node connect-9router.js \
+  --base http://localhost:20128 --password 123456 \
+  --keys-file keys.txt
+```
+
+Every key in `keys.txt` becomes one connection of the `completions-me` provider
+node (`--api-key <key>` registers a single key instead, `--model <id>` overrides
+the default). Then pick a model inside 9Router:
+
+```
+completions-me/claude-sonnet-4.6
+completions-me/gpt-5.4
+completions-me/gemini-3-pro-preview
+```
+
+Point the connector at a refreshed `keys.txt` to add more accounts; the node and
+its model list stay the same. `node launcher.js --connect-9router` runs exactly
+this and asks for the base URL and password first.
+
 ## 🛠 Quick start
 
 ```bash
-git clone https://github.com/F0Rextasy/completions-bulk-apikey.git
+# clone this repository (or download the ZIP), then:
 cd completions-bulk-apikey
 
 # 1) your proxy list — one exit per line (http://, socks5://, socks4:// or bare host:port)
@@ -88,10 +112,11 @@ Everything runs through exits from `proxies.txt`: each attempt preflights its ex
 | [`models.json`](models.json) | the `/api/v1/models` catalog as seen with a minted key |
 | `proxies.txt` | your exits, one per line — git-ignored |
 | `cli.js` · `launcher.js` | the task runner and the interactive menu (`mint` / `finish` / `verify`) |
+| `connect-9router.js` | registers the keys in `keys.txt` as 9Router connections (zero-dep) |
 
 ## 🐞 Issues
 
-If completions.me changes the register shape, the key route or the API base, the tool stops at that step and says so. **[Open an issue](https://github.com/F0Rextasy/completions-bulk-apikey/issues)** with the command you ran and the exact output; PRs are welcome.
+If completions.me changes the register shape, the key route or the API base, the tool stops at that step and says so. **[Open an issue](../../issues)** with the command you ran and the exact output; PRs are welcome.
 
 ## 📄 License
 

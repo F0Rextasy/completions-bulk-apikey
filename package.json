@@ -36,6 +36,7 @@
     "reconcile.js",
     "rescue.js",
     "verify.js",
+    "connect-9router.js",
     "README.md",
     "LICENSE"
   ]

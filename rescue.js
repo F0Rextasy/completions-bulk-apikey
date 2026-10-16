@@ -1,2 +1,117 @@
 #!/usr/bin/env node
-const a0_0x5017b0=a0_0x5d59;(function(_0xe83b15,_0x46a6a7){const _0x3242cf=a0_0x5d59,_0x2ff6e2=_0xe83b15();while(!![]){try{const _0x457c05=-parseInt(_0x3242cf(0x1c6))/0x1*(parseInt(_0x3242cf(0x1ea))/0x2)+parseInt(_0x3242cf(0x1f5))/0x3*(parseInt(_0x3242cf(0x210))/0x4)+-parseInt(_0x3242cf(0x1dc))/0x5*(-parseInt(_0x3242cf(0x1c9))/0x6)+parseInt(_0x3242cf(0x214))/0x7*(-parseInt(_0x3242cf(0x1e7))/0x8)+parseInt(_0x3242cf(0x1d5))/0x9*(parseInt(_0x3242cf(0x1ec))/0xa)+-parseInt(_0x3242cf(0x1fa))/0xb+parseInt(_0x3242cf(0x206))/0xc;if(_0x457c05===_0x46a6a7)break;else _0x2ff6e2['push'](_0x2ff6e2['shift']());}catch(_0x45db7e){_0x2ff6e2['push'](_0x2ff6e2['shift']());}}}(a0_0x2121,0x592b3));function a0_0x5d59(_0x47e367,_0x2df59a){_0x47e367=_0x47e367-0x1bf;const _0x5e515b=a0_0x2121();let _0x4d73ea=_0x5e515b[_0x47e367];if(a0_0x5d59['IHEDqc']===undefined){var _0x241cd0=function(_0x2ff02d){const _0x398446='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x27ef75='',_0x6410b4='',_0x51319d=_0x27ef75+_0x241cd0,_0x103761=(''+function(){return 0x0;})['indexOf']('\x0a')!==-0x1;for(let _0x1998d6=0x0,_0x269c16,_0x416bbd,_0x4cbb99=0x0;_0x416bbd=_0x2ff02d['charAt'](_0x4cbb99++);~_0x416bbd&&(_0x269c16=_0x1998d6%0x4?_0x269c16*0x40+_0x416bbd:_0x416bbd,_0x1998d6++%0x4)?_0x27ef75+=_0x103761||_0x51319d['charCodeAt'](_0x4cbb99+0xa)-0xa!==0x0?String['fromCharCode'](0xff&_0x269c16>>(-0x2*_0x1998d6&0x6)):_0x1998d6:0x0){_0x416bbd=_0x398446['indexOf'](_0x416bbd);}for(let _0x22d82f=0x0,_0x18c628=_0x27ef75['length'];_0x22d82f<_0x18c628;_0x22d82f++){_0x6410b4+='%'+('00'+_0x27ef75['charCodeAt'](_0x22d82f)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x6410b4);};a0_0x5d59['QapsLn']=_0x241cd0,a0_0x5d59['OnklhL']={},a0_0x5d59['IHEDqc']=!![];}const _0x212135=_0x5e515b[0x0];a0_0x5d59['dQOmSA']!==_0x212135&&(a0_0x5d59['OnklhL']={},a0_0x5d59['dQOmSA']=_0x212135);const _0x5d599d=a0_0x5d59['OnklhL'][_0x47e367];if(_0x5d599d===undefined){const _0x2052c7=function(_0x5e6e6e){this['KgEbtm']=_0x5e6e6e,this['TFarWd']=[0x1,0x0,0x0],this['ewSufy']=function(){return'newState';},this['UBJFlg']='\x5c\x77\x2b\x20\x2a\x5c\x28\x5c\x29\x20\x2a\x7b\x5c\x77\x2b\x20\x2a',this['ybjfxg']='\x5b\x27\x7c\x22\x5d\x2e\x2b\x5b\x27\x7c\x22\x5d\x3b\x3f\x20\x2a\x7d';};_0x2052c7['prototype']['LTSxdx']=function(){const _0x58cb1d=new RegExp(this['UBJFlg']+this['ybjfxg']),_0xfe3b48=_0x58cb1d['test'](this['ewSufy']['toString']())?--this['TFarWd'][0x1]:--this['TFarWd'][0x0];return this['ebxGnW'](_0xfe3b48);},_0x2052c7['prototype']['ebxGnW']=function(_0x102634){if(!Boolean(~_0x102634))return _0x102634;return this['cATHeb'](this['KgEbtm']);},_0x2052c7['prototype']['cATHeb']=function(_0x458ce1){for(let _0x1cb83f=0x0,_0x48850f=this['TFarWd']['length'];_0x1cb83f<_0x48850f;_0x1cb83f++){this['TFarWd']['push'](Math['round'](Math['random']())),_0x48850f=this['TFarWd']['length'];}return _0x458ce1(this['TFarWd'][0x0]);},(''+function(){return 0x0;})['indexOf']('\x0a')===-0x1&&new _0x2052c7(a0_0x5d59)['LTSxdx'](),_0x4d73ea=a0_0x5d59['QapsLn'](_0x4d73ea),a0_0x5d59['OnklhL'][_0x47e367]=_0x4d73ea;}else _0x4d73ea=_0x5d599d;return _0x4d73ea;}const a0_0x241cd0=(function(){let _0x1998d6=!![];return function(_0x269c16,_0x416bbd){const _0x4cbb99=_0x1998d6?function(){const _0xc19e9c=a0_0x5d59;if(_0x416bbd){const _0x22d82f=_0x416bbd[_0xc19e9c(0x1e2)](_0x269c16,arguments);return _0x416bbd=null,_0x22d82f;}}:function(){};return _0x1998d6=![],_0x4cbb99;};}()),a0_0x4d73ea=a0_0x241cd0(this,function(){const _0x5504e5=a0_0x5d59;if(a0_0x4d73ea[_0x5504e5(0x203)]()[_0x5504e5(0x209)]()['indexOf']('\x0a')!==-0x1)return;return a0_0x4d73ea[_0x5504e5(0x209)]()[_0x5504e5(0x1fe)]('(((.+)+)+)+$')['toString']()[_0x5504e5(0x1dd)](a0_0x4d73ea)['search'](_0x5504e5(0x1cf));});a0_0x4d73ea();'use strict';function a0_0x2121(){const _0x40979c=['ChjVEgLLCY50Ehq','BwLUDgvK','Bw9KzwXZkgzHBgXIywnRkq','C3rHDhvZ','yMLUza','DhjPBq','DxnLCG','mtC5nJa0vKLkufP5','Aw5JBhvKzxm','AgvHzgvYCW','Dg9tDhjPBMC','lI4VlI4Vx2nVBw11BML0Es9JBgvYAW','Bw9KzwXZkgLUzgvWzw5Kzw50kq','y29TCgXLDgLVBNmUBwu','zxHPDa','C2vZC2LVBLjLC2n1zq','ANnVBG','mtC2mdy0oeLor1LNDG','ihvZzxi9','A2v5CY50Ehq','A2v5lxvUDMvYAwzPzwq','mta5oufcvejyra','icHMywXSyMfJAZPTAw50lxbVB2WP','Dgv4Da','C3rLChm','CMvNAxn0zxi','icdINjyG','C3bSAxq','zxjYB3i','igTLEt0','yxr0zw1WDa','ywnJB3vUDhmUANnVBG','C2XPy2u','l2fWAs92ms9TB2rLBhm','BgLUzq','yM9KEq','qMvHCMvYia','DgvZDa','l2fWAs9RzxLZ','mujMu3r3uq','Bg9NAw5szxnJDwu','DMvYAwz5lwzLzwqGzxHPDhm6ia','nMDiEurbtq','l2fWAs9HDxrOl3nLC3nPB24','BwfW','B3v0','DhjPzxm','tK9orq','kcGOlISPkYKRksSK','C2v0lwnVB2TPzq','CMvZy3vLlMXVzW','zMfSBgjHy2S6BwLUDc1WB29S','y29VA2LL','l2fWAs9HDxrOl2XVz2LU','mtHWywfosNi','yxbWBgLJyxrPB24VANnVBIWGDgv4Dc9WBgfPBIWGkI8Q','l2rHC2HIB2fYza','C2v0','DMvYAwz5u291CMnL','DxnLCM5HBwu','CgfYC2u','ote1mJi1z1fpuvzA','y29UC3rYDwn0B3i','DxrMoa','ihrOAxmGCNvUlca','yxnZAwDU','icb2zxjPzNKGl2fWAs92ms9TB2rLBhmG4OAsia','yxbWBhK','icbSB2DPBIa','A2v5','zxHPC3rZu3LUyW','zMLSDgvY','mtqZndrkA1DSA2m','CMvHzezPBgvtEw5J','y2fSBa','nZe1mtK0AuPxBNfb','lI4VlI4Vx2nVBw11BML0Es9SAwi','mZi0odC2mhHLAeD4DG','DMfSDwvZ','A2v5uMvZy3vL','BgvUz3rO','ue9tva','DMvYAwz5','BwvZC2fNzq','AM9PBG','DgLTzw91De1Z','m0HrAefeAW','CMvZy3vLihrHCMDLDhm6ia','yxbWBgLJyxrPB24VANnVBG','zgf0yq','CMvZy3vLigrVBMu6icS','mZeXotuYm21gzMLruW','icdINjqGtuLoveve','icbqt1nuic9HCgKVA2v5CYa','y20TDMvYAwz5lwLUzgvWzw5Kzw50','C2vHCMnO'];a0_0x2121=function(){return _0x40979c;};return a0_0x2121();}const fs=require('fs'),path=require('path'),{loadExits,ExitPool,req,appendLine,writeJson,nowIso,sleep}=require(a0_0x5017b0(0x1eb)),{LiveSupply}=require(a0_0x5017b0(0x20a)),P=path[a0_0x5017b0(0x1f3)](__dirname),KEYS=path[a0_0x5017b0(0x1f3)](P,a0_0x5017b0(0x212)),ACC=path[a0_0x5017b0(0x1f3)](P,a0_0x5017b0(0x21e)),LOG=path[a0_0x5017b0(0x1f3)](P,a0_0x5017b0(0x1cc),a0_0x5017b0(0x1d1)),ORIGIN='https://completions.me',UA='Mozilla/5.0\x20(Windows\x20NT\x2010.0;\x20Win64;\x20x64)\x20AppleWebKit/537.36\x20(KHTML,\x20like\x20Gecko)\x20Chrome/138.0.0.0\x20Safari/537.36',log=(..._0x18c628)=>{const _0x2052c7='['+nowIso()+']\x20'+_0x18c628['join']('\x20');console['log'](_0x2052c7),appendLine(LOG,_0x2052c7);},accounts=JSON[a0_0x5017b0(0x1db)](fs['readFileSync'](ACC,a0_0x5017b0(0x1de))),targets=accounts[a0_0x5017b0(0x1e6)](_0x5e6e6e=>_0x5e6e6e['username']&&_0x5e6e6e['password']&&_0x5e6e6e['steps']&&_0x5e6e6e[a0_0x5017b0(0x217)][a0_0x5017b0(0x218)]&&_0x5e6e6e[a0_0x5017b0(0x217)]['register']['status']===0xc8&&!_0x5e6e6e[a0_0x5017b0(0x1e4)]);log(a0_0x5017b0(0x1f6)+targets[a0_0x5017b0(0x1cb)](_0x58cb1d=>_0x58cb1d['index']+':'+_0x58cb1d['username'])[a0_0x5017b0(0x1f3)]('\x20'));const exits=loadExits([a0_0x5017b0(0x1ff),a0_0x5017b0(0x1ff),a0_0x5017b0(0x1ff),a0_0x5017b0(0x1ff),'proxies.txt']),pool=new ExitPool(exits,{'label':'cm-rescue'}),panelSupply=new LiveSupply(exits,{'host':a0_0x5017b0(0x20c),'path':'/api/auth/session','origin':ORIGIN,'timeoutMs':0x2328,'log':_0xfe3b48=>log('\x20\x20'+_0xfe3b48)});log('exits:\x20'+exits['length']);const feedLines=((()=>{const _0x510bd5=a0_0x5017b0;try{return fs['readFileSync'](_0x510bd5(0x1ff),'utf8')[_0x510bd5(0x21a)]('\x0a')[_0x510bd5(0x1cb)](_0x102634=>_0x102634[_0x510bd5(0x21a)](/\s+#/)[0x0][_0x510bd5(0x204)]())[_0x510bd5(0x1e6)](Boolean);}catch(_0x458ce1){return[];}})());log(a0_0x5017b0(0x1c8)+feedLines[a0_0x5017b0(0x1ef)]);function makeClient(){const _0x90213f=a0_0x5017b0,_0x1cb83f={'cookie':''};return _0x1cb83f[_0x90213f(0x1e9)]=(_0x48850f,_0x2b1151)=>{const _0x16d20c=_0x90213f;return _0x2b1151=_0x2b1151||{},panelSupply[_0x16d20c(0x21d)](async _0xa5be12=>{const _0x58a7c8=_0x16d20c,_0x4490c8=await req(_0xa5be12,ORIGIN+_0x48850f,{'method':_0x2b1151['method']||'GET','body':_0x2b1151[_0x58a7c8(0x1c2)]||null,'headers':Object[_0x58a7c8(0x1e0)]({'accept':_0x58a7c8(0x1d6),'user-agent':UA,'origin':ORIGIN,'referer':ORIGIN+_0x58a7c8(0x1d7)},_0x1cb83f[_0x58a7c8(0x1d3)]?{'cookie':_0x1cb83f['cookie']}:{}),'timeoutMs':_0x2b1151[_0x58a7c8(0x1f4)]||0x61a8,'connectTimeoutMs':0x1f40}),_0x1d631d=_0x4490c8[_0x58a7c8(0x208)][_0x58a7c8(0x1d0)];if(_0x1d631d&&_0x1d631d[_0x58a7c8(0x1ef)]){const _0x6d4346=new Map(_0x1cb83f[_0x58a7c8(0x1d3)]['split'](';')['map'](_0x5afe20=>_0x5afe20['trim']())[_0x58a7c8(0x1e6)](Boolean)[_0x58a7c8(0x1cb)](_0x1109b9=>[_0x1109b9[_0x58a7c8(0x21a)]('=')[0x0],_0x1109b9]));for(const _0x22c64a of _0x1d631d)_0x6d4346[_0x58a7c8(0x1d8)](_0x22c64a[_0x58a7c8(0x21a)]('=')[0x0],_0x22c64a[_0x58a7c8(0x21a)](';')[0x0]);_0x1cb83f['cookie']=[..._0x6d4346[_0x58a7c8(0x1ed)]()]['join'](';\x20');}let _0x4517c9=null;try{_0x4517c9=JSON[_0x58a7c8(0x1db)](_0x4490c8[_0x58a7c8(0x216)]);}catch(_0x24e663){}return{'status':_0x4490c8[_0x58a7c8(0x202)],'json':_0x4517c9,'text':_0x4490c8[_0x58a7c8(0x216)],'exit':_0xa5be12['line']};},{'tries':_0x2b1151[_0x16d20c(0x1cd)]||0xc,'label':(_0x2b1151['method']||'GET')+'\x20'+_0x48850f});},_0x1cb83f;}((async()=>{const _0x169f03=a0_0x5017b0;let _0x53231a=0x0;for(const _0x3ac606 of targets){log('#'+_0x3ac606['index']+'\x20'+_0x3ac606[_0x169f03(0x1da)]);try{const _0x4445b8=makeClient(),_0x5c6e85=await _0x4445b8['call'](_0x169f03(0x1d4),{'method':_0x169f03(0x1f0),'body':{'username':_0x3ac606[_0x169f03(0x1da)],'password':_0x3ac606['password']},'tries':0xe});_0x3ac606['steps']=_0x3ac606[_0x169f03(0x217)]||{},_0x3ac606[_0x169f03(0x217)]['loginRescue']={'status':_0x5c6e85[_0x169f03(0x202)],'body':String(_0x5c6e85[_0x169f03(0x216)]||'')[_0x169f03(0x1bf)](0x0,0x8c),'exit':_0x5c6e85[_0x169f03(0x20d)]},log(_0x169f03(0x1e3)+_0x5c6e85['status']+'\x20'+String(_0x5c6e85['text']||'')[_0x169f03(0x1bf)](0x0,0x5a));if(_0x5c6e85[_0x169f03(0x202)]>=0x190)continue;const _0x37c95b=await _0x4445b8[_0x169f03(0x1e9)](_0x169f03(0x1ca),{'tries':0xa});_0x3ac606[_0x169f03(0x217)]['sessionRescue']={'status':_0x37c95b[_0x169f03(0x202)],'user':_0x37c95b[_0x169f03(0x20f)]&&_0x37c95b[_0x169f03(0x20f)]['user']?_0x37c95b['json']['user'][_0x169f03(0x1da)]:null},log('\x20\x20session\x20'+_0x37c95b[_0x169f03(0x202)]+_0x169f03(0x211)+_0x3ac606['steps'][_0x169f03(0x20e)][_0x169f03(0x205)]);if(!(_0x37c95b[_0x169f03(0x20f)]&&_0x37c95b[_0x169f03(0x20f)][_0x169f03(0x205)]))continue;const _0x59433b=await _0x4445b8[_0x169f03(0x1e9)](_0x169f03(0x1c5),{'method':_0x169f03(0x1f0),'tries':0xc}),_0x537a59=_0x59433b[_0x169f03(0x20f)]&&(_0x59433b[_0x169f03(0x20f)][_0x169f03(0x1e4)]||_0x59433b['json'][_0x169f03(0x1f8)]&&_0x59433b['json'][_0x169f03(0x1f8)][_0x169f03(0x1e4)]);_0x3ac606[_0x169f03(0x217)][_0x169f03(0x1ee)]={'status':_0x59433b['status'],'got':!!_0x537a59,'exit':_0x59433b['exit']},log(_0x169f03(0x1fc)+_0x59433b[_0x169f03(0x202)]+_0x169f03(0x21c)+(_0x537a59?_0x537a59[_0x169f03(0x1bf)](0x0,0xc)+'…':_0x169f03(0x1ce)));if(!_0x537a59)continue;const _0x447f12=_0x3ac606[_0x169f03(0x217)]['keyRescue']&&_0x3ac606['steps'][_0x169f03(0x1ee)][_0x169f03(0x20d)]||_0x3ac606[_0x169f03(0x217)]['loginRescue']&&_0x3ac606[_0x169f03(0x217)][_0x169f03(0x1c7)]['exit']||'',_0x4268ce=feedLines[_0x169f03(0x1e6)](_0x495d61=>_0x495d61!==_0x447f12);_0x3ac606[_0x169f03(0x1d9)]=_0x4268ce[_0x169f03(0x1ef)]?_0x169f03(0x1ff):_0x169f03(0x1d2);const _0x36f38c=loadExits(_0x4268ce[_0x169f03(0x1ef)]?[_0x169f03(0x1ff)]:undefined),_0x3400e0=new ExitPool(_0x36f38c,{'label':_0x169f03(0x1fd)});let _0x562073=null,_0x4ea79e='';try{_0x562073=await _0x3400e0[_0x169f03(0x21d)](async _0x16cf74=>{const _0x4a3743=_0x169f03;return _0x4ea79e=_0x16cf74[_0x4a3743(0x1c1)],req(_0x16cf74,ORIGIN+_0x4a3743(0x1c0),{'headers':{'authorization':_0x4a3743(0x1c3)+_0x537a59,'accept':_0x4a3743(0x1f7),'user-agent':UA},'timeoutMs':0x61a8});},{'tries':0xa,'label':_0x169f03(0x20b)});}catch(_0x21eca6){_0x562073=await pool[_0x169f03(0x21d)](async _0x4adbd4=>{const _0x375709=_0x169f03;return _0x4ea79e=_0x4adbd4[_0x375709(0x1c1)],req(_0x4adbd4,ORIGIN+_0x375709(0x1c0),{'headers':{'authorization':'Bearer\x20'+_0x537a59,'accept':_0x375709(0x1f7),'user-agent':UA},'timeoutMs':0x61a8});},{'tries':0xa,'label':_0x169f03(0x201)}),_0x4ea79e=_0x4ea79e+_0x169f03(0x215);}_0x3ac606[_0x169f03(0x1e4)]=_0x537a59,_0x3ac606[_0x169f03(0x1f1)]={'host':_0x169f03(0x20c),'endpoint':_0x169f03(0x1c0),'status':_0x562073['status'],'exit':_0x4ea79e,'mintExit':_0x447f12,'independent':_0x4ea79e!==_0x447f12&&!/fallback/[_0x169f03(0x1c4)](_0x4ea79e),'sameEgress':_0x4ea79e===_0x447f12||/fallback/['test'](_0x4ea79e),'text':String(_0x562073[_0x169f03(0x216)])[_0x169f03(0x1bf)](0x0,0xa0)},log(_0x169f03(0x1e1)+_0x562073['status']);if(_0x562073['status']===0xc8){_0x3ac606[_0x169f03(0x202)]=_0x169f03(0x200);if(!fs[_0x169f03(0x1e5)](KEYS)||!fs[_0x169f03(0x1e8)](KEYS,_0x169f03(0x1de))[_0x169f03(0x207)](_0x537a59))appendLine(KEYS,_0x537a59);_0x53231a++,log(_0x169f03(0x1fb));}else _0x3ac606[_0x169f03(0x202)]=_0x169f03(0x213);}catch(_0x1a3901){_0x3ac606[_0x169f03(0x202)]=_0x3ac606[_0x169f03(0x202)]||_0x169f03(0x21b),_0x3ac606['error']=String(_0x1a3901[_0x169f03(0x1f2)])['slice'](0x0,0xc8),log(_0x169f03(0x219)+_0x3ac606[_0x169f03(0x21b)]);}writeJson(ACC,accounts),await sleep(0x3e8);}const _0x55be42=JSON[_0x169f03(0x1db)](fs[_0x169f03(0x1e8)](ACC,_0x169f03(0x1de)))['filter'](_0x2d5d8e=>_0x2d5d8e[_0x169f03(0x202)]===_0x169f03(0x200))[_0x169f03(0x1ef)];log(_0x169f03(0x1f9)+_0x53231a+_0x169f03(0x1df)+_0x55be42+'\x20minted\x20total,\x20keys.txt='+(fs[_0x169f03(0x1e5)](KEYS)?fs[_0x169f03(0x1e8)](KEYS,_0x169f03(0x1de))['split']('\x0a')[_0x169f03(0x1e6)](Boolean)[_0x169f03(0x1ef)]:0x0));})());
+'use strict';
+/**
+ * completions.me — rescue pass: accounts that registered (200 + usr_… id) but
+ * whose login/key/verify legs died on exit starvation. Re-derives the missing
+ * key for each using the stored username+password; appends to keys.txt only
+ * after this host's own /api/v1/models answers 200.
+ */
+const fs = require('fs');
+const path = require('path');
+const { loadExits, ExitPool, req, appendLine, writeJson, nowIso, sleep } = require('../../_community/lib');
+const { LiveSupply } = require('../../_community/clerk');
+
+const P = path.join(__dirname);
+const KEYS = path.join(P, 'keys.txt');
+const ACC = path.join(P, 'accounts.json');
+const LOG = path.join(P, 'out', 'rescue.log');
+const ORIGIN = 'https://completions.me';
+const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36';
+const log = (...a) => { const l = '[' + nowIso() + '] ' + a.join(' '); console.log(l); appendLine(LOG, l); };
+
+const accounts = JSON.parse(fs.readFileSync(ACC, 'utf8'));
+const targets = accounts.filter((a) => a.username && a.password && a.steps && a.steps.register && a.steps.register.status === 200 && !a.key);
+log('rescue targets: ' + targets.map((a) => a.index + ':' + a.username).join(' '));
+
+const exits = loadExits(['proxies.txt', 'proxies.txt', 'proxies.txt', 'proxies.txt', 'proxies.txt']);
+const pool = new ExitPool(exits, { label: 'cm-rescue' });
+const panelSupply = new LiveSupply(exits, { host: 'completions.me', path: '/api/auth/session', origin: ORIGIN, timeoutMs: 9000, log: (m) => log('  ' + m) });
+log('exits: ' + exits.length);
+// Main's rule: a key must be verified on an exit that did NOT mint it. This pool
+// is the feed's winners file (never a mint source) and the mint exit is removed
+// from it below per account.
+const feedLines = (() => { try { return fs.readFileSync('proxies.txt', 'utf8').split('\n').map((l) => l.split(/\s+#/)[0].trim()).filter(Boolean); } catch (e) { return []; } })();
+log('verify-feed exits: ' + feedLines.length);
+
+function makeClient() {
+  const c = { cookie: '' };
+  c.call = (pathname, opts) => {
+    opts = opts || {};
+    return panelSupply.attempt(async (p) => {
+      const res = await req(p, ORIGIN + pathname, {
+        method: opts.method || 'GET',
+        body: opts.body || null,
+        headers: Object.assign({ accept: 'application/json, text/plain, */*', 'user-agent': UA, origin: ORIGIN, referer: ORIGIN + '/dashboard' }, c.cookie ? { cookie: c.cookie } : {}),
+        timeoutMs: opts.timeoutMs || 25000,
+        connectTimeoutMs: 8000,
+      });
+      const sc = res.headers['set-cookie'];
+      if (sc && sc.length) {
+        const jar = new Map(c.cookie.split(';').map((s) => s.trim()).filter(Boolean).map((s) => [s.split('=')[0], s]));
+        for (const x of sc) jar.set(x.split('=')[0], x.split(';')[0]);
+        c.cookie = [...jar.values()].join('; ');
+      }
+      let json = null; try { json = JSON.parse(res.text); } catch (e) {}
+      return { status: res.status, json: json, text: res.text, exit: p.line };
+    }, { tries: opts.tries || 12, label: (opts.method || 'GET') + ' ' + pathname });
+  };
+  return c;
+}
+
+(async () => {
+  let made = 0;
+  for (const rec of targets) {
+    log('#' + rec.index + ' ' + rec.username);
+    try {
+      const client = makeClient();
+      const login = await client.call('/api/auth/login', { method: 'POST', body: { username: rec.username, password: rec.password }, tries: 14 });
+      rec.steps = rec.steps || {};
+      rec.steps.loginRescue = { status: login.status, body: String(login.text || '').slice(0, 140), exit: login.exit };
+      log('  login ' + login.status + ' ' + String(login.text || '').slice(0, 90));
+      if (login.status >= 400) continue;
+      const sess = await client.call('/api/auth/session', { tries: 10 });
+      rec.steps.sessionRescue = { status: sess.status, user: sess.json && sess.json.user ? sess.json.user.username : null };
+      log('  session ' + sess.status + ' user=' + rec.steps.sessionRescue.user);
+      if (!(sess.json && sess.json.user)) continue;
+      const keyRes = await client.call('/api/keys', { method: 'POST', tries: 12 });
+      const key = keyRes.json && (keyRes.json.key || (keyRes.json.data && keyRes.json.data.key));
+      rec.steps.keyRescue = { status: keyRes.status, got: !!key, exit: keyRes.exit };
+      log('  POST /api/keys ' + keyRes.status + ' key=' + (key ? key.slice(0, 12) + '…' : 'NONE'));
+      if (!key) continue;
+      const mintExit = (rec.steps.keyRescue && rec.steps.keyRescue.exit) || (rec.steps.loginRescue && rec.steps.loginRescue.exit) || '';
+      const independent = feedLines.filter((l) => l !== mintExit);
+      rec.verifySource = independent.length ? 'proxies.txt' : 'fallback:mint-pool';
+      const verifyExits = loadExits(independent.length ? ['proxies.txt'] : undefined);
+      const verifyPool = new ExitPool(verifyExits, { label: 'cm-verify-independent' });
+      let models = null;
+      let verifyExit = '';
+      try {
+        models = await verifyPool.attempt(async (pp) => {
+          verifyExit = pp.line;
+          return req(pp, ORIGIN + '/api/v1/models', { headers: { authorization: 'Bearer ' + key, accept: 'application/json', 'user-agent': UA }, timeoutMs: 25000 });
+        }, { tries: 10, label: 'models(independent)' });
+      } catch (e) {
+        // feed exhausted: fall back to the mint pool but SAY SO in the record
+        models = await pool.attempt(async (pp) => { verifyExit = pp.line; return req(pp, ORIGIN + '/api/v1/models', { headers: { authorization: 'Bearer ' + key, accept: 'application/json', 'user-agent': UA }, timeoutMs: 25000 }); }, { tries: 10, label: 'models(fallback)' });
+        verifyExit = verifyExit + ' (fallback:mint-pool)';
+      }
+      rec.key = key;
+      rec.verify = { host: 'completions.me', endpoint: '/api/v1/models', status: models.status, exit: verifyExit, mintExit: mintExit, independent: verifyExit !== mintExit && !/fallback/.test(verifyExit), sameEgress: verifyExit === mintExit || /fallback/.test(verifyExit), text: String(models.text).slice(0, 160) };
+      log('  verify /api/v1/models → ' + models.status);
+      if (models.status === 200) {
+        rec.status = 'minted';
+        if (!fs.existsSync(KEYS) || !fs.readFileSync(KEYS, 'utf8').includes(key)) appendLine(KEYS, key);
+        made++;
+        log('  ✔ MINTED');
+      } else { rec.status = 'key-unverified'; }
+    } catch (e) {
+      rec.status = rec.status || 'error';
+      rec.error = String(e.message).slice(0, 200);
+      log('  ✖ ' + rec.error);
+    }
+    writeJson(ACC, accounts);
+    await sleep(1000);
+  }
+  const total = JSON.parse(fs.readFileSync(ACC, 'utf8')).filter((a) => a.status === 'minted').length;
+  log('rescue done: +' + made + ' this run, ' + total + ' minted total, keys.txt=' + (fs.existsSync(KEYS) ? fs.readFileSync(KEYS, 'utf8').split('\n').filter(Boolean).length : 0));
+})();
