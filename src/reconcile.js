@@ -6,20 +6,45 @@
  * explicit sameEgress flag — and mark any key whose account is genuinely
  * unknown instead of leaving it silently authoritative.
  *
- *   node reconcile.js
+ *   node src/reconcile.js
  */
 const fs = require('fs');
 const path = require('path');
-const { loadExits, ExitPool, req, nowIso } = require('../../_community/lib');
+/** The shared workspace engine is not part of this repo: a fresh clone must not
+ *  crash on import, so its absence is explained at the first call that needs it. */
+const engine = (() => {
+  try {
+    return require('../../_community/lib');
+  } catch (e) {
+    const hint = 'this tool needs the workspace engine (../../_community/lib) — a fresh clone of this repo does not ship it';
+    const unavailable = () => {
+      console.error(hint);
+      process.exit(2);
+    };
+    return { loadExits: unavailable, ExitPool: unavailable, req: unavailable, nowIso: unavailable };
+  }
+})();
+const { loadExits, ExitPool, req, nowIso } = engine;
 
-const P = path.join(__dirname);
+const P = path.resolve(__dirname, '..'); // data root (the repo root)
 const KEYS = path.join(P, 'keys.txt');
 const ACC = path.join(P, 'accounts.json');
 const OUT = path.join(P, 'out', 'reconcile.json');
 const ORIGIN = 'https://completions.me';
 
-const accounts = JSON.parse(fs.readFileSync(ACC, 'utf8'));
-const keyLines = fs.readFileSync(KEYS, 'utf8').split('\n').filter((l) => l.trim());
+/** accounts.json and keys.txt come from a run — say what is missing instead of
+ *  spilling a raw ENOENT trace in a fresh clone. */
+const readOrExit = (file) => {
+  try {
+    return fs.readFileSync(file, 'utf8');
+  } catch (e) {
+    console.error(`${path.basename(file)} not found at ${file} — mint a batch first (node src/mint-node.js), then re-run this tool`);
+    process.exit(2);
+  }
+};
+
+const accounts = JSON.parse(readOrExit(ACC));
+const keyLines = readOrExit(KEYS).split('\n').filter((l) => l.trim());
 const keys = keyLines.map((l) => l.split(/\s+#/)[0].trim()).filter(Boolean);
 const comments = new Map();
 for (const l of keyLines) { const m = l.split(/\s+#\s?/); if (m[1]) comments.set(m[0].trim(), m[1]); }

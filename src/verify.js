@@ -5,8 +5,8 @@
  * Re-verifies every key in keys.txt against the panel's own API, through the
  * exits in proxies.txt.
  *
- *   node verify.js                       # keys.txt, first exit that answers
- *   node verify.js --file keys.txt --limit 3 --conc 4 --chat
+ *   node src/verify.js                       # keys.txt, first exit that answers
+ *   node src/verify.js --file keys.txt --limit 3 --conc 4 --chat
  *
  * The base URL is pinned here on purpose: the app serves its OpenAI-compatible
  * API under /api/v1 (not /v1), which is the single most common mistake made
@@ -17,7 +17,7 @@ const fs = require('fs');
 const path = require('path');
 const { parseProxy, fetchText } = require('./proxy.js');
 
-const HERE = __dirname;
+const HERE = path.resolve(__dirname, '..'); // data root (the repo root)
 const BASE = 'https://completions.me/api/v1';
 const argv = process.argv.slice(2);
 const opt = (name, dflt) => {

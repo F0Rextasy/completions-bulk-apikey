@@ -1,8 +1,21 @@
+<div align="center">
+
+```
+ ██████╗   ██████╗  ███╗   ███╗ ██████╗  ██╗      ███████╗ ████████╗ ██╗  ██████╗  ███╗   ██╗ ███████╗      ███╗   ███╗ ███████╗
+██╔════╝  ██╔═══██╗ ████╗ ████║ ██╔══██╗ ██║      ██╔════╝ ╚══██╔══╝ ██║ ██╔═══██╗ ████╗  ██║ ██╔════╝      ████╗ ████║ ██╔════╝
+██║       ██║   ██║ ██╔████╔██║ ██████╔╝ ██║      █████╗      ██║    ██║ ██║   ██║ ██╔██╗ ██║ ███████╗      ██╔████╔██║ █████╗
+██║       ██║   ██║ ██║╚██╔╝██║ ██╔═══╝  ██║      ██╔══╝      ██║    ██║ ██║   ██║ ██║╚██╗██║ ╚════██║      ██║╚██╔╝██║ ██╔══╝
+╚██████╗  ╚██████╔╝ ██║ ╚═╝ ██║ ██║      ███████╗ ███████╗    ██║    ██║ ╚██████╔╝ ██║ ╚████║ ███████║ ██╗  ██║ ╚═╝ ██║ ███████╗
+ ╚═════╝   ╚═════╝  ╚═╝     ╚═╝ ╚═╝      ╚══════╝ ╚══════╝    ╚═╝    ╚═╝  ╚═════╝  ╚═╝  ╚══╝ ╚══════╝ ╚═╝  ╚═╝     ╚═╝ ╚══════╝
+```
+
 # completions-bulk-apikey
 
-**Bulk-create Completions.me accounts with auto-generated API keys — OpenAI-compatible inference + 9Router connector.**
+**Bulk-create Completions.me accounts with auto-generated API keys — OpenAI-compatible + 9Router connector.**
 
 [![9Router](https://img.shields.io/badge/9Router-connector-8B5CF6.svg?style=for-the-badge)](#-connect-to-9router)
+
+</div>
 
 ## 🤖 Models & free tier
 
@@ -15,7 +28,7 @@
 | Google | `gemini-3.1-pro-preview`, `gemini-3-pro-preview`, `gemini-3-flash-preview`, `gemini-2.5-pro` |
 | others | `grok-code-fast-1`, `oswe-vscode-prime`, `oswe-vscode-secondary` |
 
-The full catalog is in [`models.json`](models.json) — the raw `/api/v1/models` answer, captured with a key this tool minted.
+The full catalog is in [`models.json`](src/models.json) — the raw `/api/v1/models` answer, captured with a key this tool minted.
 
 **The free tier:** the panel's own pages describe it as **“100% Free · Unlimited Requests · No Credit Card”**, and the register form asks for no payment details, no e-mail and no captcha. Usage lives on the account (`GET /api/usage`), and the key reads the same 26-model catalog.
 
@@ -38,7 +51,7 @@ print(client.chat.completions.create(
 Completions.me is OpenAI-compatible, so register it once and use every key:
 
 ```bash
-node connect-9router.js \
+node src/connect-9router.js \
   --base http://localhost:20128 --password 123456 \
   --keys-file keys.txt
 ```
@@ -54,7 +67,7 @@ completions-me/gemini-3-pro-preview
 ```
 
 Point the connector at a refreshed `keys.txt` to add more accounts; the node and
-its model list stay the same. `node launcher.js --connect-9router` runs exactly
+its model list stay the same. `node src/launcher.js --connect-9router` runs exactly
 this and asks for the base URL and password first.
 
 ## 🛠 Quick start
@@ -67,14 +80,14 @@ cd completions-bulk-apikey
 printf 'socks5://127.0.0.1:1080\n' > proxies.txt
 
 # 2) go
-node launcher.js               # interactive: mint / finish / verify / settings
+node src/launcher.js               # interactive: mint / finish / verify / settings
 # or directly:
-node cli.js mint --count 3     # fresh accounts → one verified key each
-node cli.js finish             # log back in to accounts already created and finish their key
-node cli.js verify             # re-check the keys already on disk
+node src/cli.js mint --count 3     # fresh accounts → one verified key each
+node src/cli.js finish             # log back in to accounts already created and finish their key
+node src/cli.js verify             # re-check the keys already on disk
 ```
 
-`node cli.js help` lists the tasks. Keys land in `keys.txt`, one per line, appended the moment the provider's own API answers with them; per-account detail (username, password, steps, verify result) lands in `accounts.json`.
+`node src/cli.js help` lists the tasks. Keys land in `keys.txt`, one per line, appended the moment the provider's own API answers with them; per-account detail (username, password, steps, verify result) lands in `accounts.json`.
 
 ## ✅ Verified working — every key is tested
 
@@ -84,7 +97,7 @@ A key counts only when **this provider's own host** answers with it:
 |---|---|---|
 | auth + model list | `GET https://completions.me/api/v1/models` | `200` + the account's model catalog (26 models) |
 
-The check runs from a **different exit than the one that minted the key**, so it cannot pass on session state rather than key validity. `node cli.js verify` reproduces exactly that check for your own file, and you can do it by hand:
+The check runs from a **different exit than the one that minted the key**, so it cannot pass on session state rather than key validity. `node src/cli.js verify` reproduces exactly that check for your own file, and you can do it by hand:
 
 ```bash
 curl https://completions.me/api/v1/models -H "Authorization: Bearer sk-cp_…"
@@ -107,12 +120,13 @@ Everything runs through exits from `proxies.txt`: each attempt preflights its ex
 
 | file | content |
 |---|---|
+| `src/` | the tool — run it as `node src/<file>.js` from the repository root |
 | `keys.txt` | one verified key per line — git-ignored, never committed |
 | `accounts.json` | one record per account: `username`, `password`, `steps`, `verify` — git-ignored |
-| [`models.json`](models.json) | the `/api/v1/models` catalog as seen with a minted key |
+| [`models.json`](src/models.json) | the `/api/v1/models` catalog as seen with a minted key |
 | `proxies.txt` | your exits, one per line — git-ignored |
-| `cli.js` · `launcher.js` | the task runner and the interactive menu (`mint` / `finish` / `verify`) |
-| `connect-9router.js` | registers the keys in `keys.txt` as 9Router connections (zero-dep) |
+| `src/cli.js` · `src/launcher.js` | the task runner and the interactive menu (`mint` / `finish` / `verify`) |
+| `src/connect-9router.js` | registers the keys in `keys.txt` as 9Router connections (zero-dep) |
 
 ## 🐞 Issues
 

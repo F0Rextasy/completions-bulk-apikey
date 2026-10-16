@@ -18,7 +18,21 @@
 
 const fs = require('fs');
 const path = require('path');
-const { loadExits, ExitPool, req, sleep, randHex, randPass, nowIso, appendLine, readJson, writeJson, extractCode } = require('../../_community/lib');
+/** The shared workspace engine is not part of this repo: a fresh clone must not
+ *  crash on import, so its absence is explained at the first call that needs it. */
+const engine = (() => {
+  try {
+    return require('../../_community/lib');
+  } catch (e) {
+    const hint = 'this tool needs the workspace engine (../../_community/lib) — a fresh clone of this repo does not ship it';
+    const unavailable = () => {
+      console.error(hint);
+      process.exit(2);
+    };
+    return { loadExits: unavailable, ExitPool: unavailable, req: unavailable, sleep: unavailable, randHex: unavailable, randPass: unavailable, nowIso: unavailable, appendLine: unavailable, readJson: unavailable, writeJson: unavailable, extractCode: unavailable };
+  }
+})();
+const { loadExits, ExitPool, req, sleep, randHex, randPass, nowIso, appendLine, readJson, writeJson, extractCode } = engine;
 
 const argv = process.argv.slice(2);
 const one = (n, d) => {
@@ -34,7 +48,7 @@ const many = (n) => {
 const ORIGIN = one('base', 'https://completions.me');
 const COUNT = parseInt(one('count', '3'), 10);
 const POOLS = many('pool');
-const DIR = path.resolve(__dirname);
+const DIR = path.resolve(__dirname, '..'); // data root (the repo root)
 const KEYS = path.join(DIR, 'keys.txt');
 const ACCOUNTS = path.join(DIR, 'accounts.json');
 const LOG = path.join(DIR, 'out', `mint-node-${new Date().toISOString().slice(0, 10)}.log`);
@@ -189,7 +203,7 @@ async function main() {
         rec.status = 'minted';
         if (!fs.existsSync(KEYS) || !fs.readFileSync(KEYS, 'utf8').includes(found.key)) appendLine(KEYS, found.key);
         made.push(found.key);
-        if (!fs.existsSync(path.join(DIR, 'models.json'))) writeJson(path.join(DIR, 'models.json'), { at: nowIso(), base: ORIGIN, body: models.text.slice(0, 20000) });
+        if (!fs.existsSync(path.join(__dirname, 'models.json'))) writeJson(path.join(__dirname, 'models.json'), { at: nowIso(), base: ORIGIN, body: models.text.slice(0, 20000) });
       } else {
         rec.status = 'key-unverified';
       }

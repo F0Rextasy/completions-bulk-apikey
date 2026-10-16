@@ -8,10 +8,27 @@
  */
 const fs = require('fs');
 const path = require('path');
-const { loadExits, ExitPool, req, appendLine, writeJson, nowIso, sleep } = require('../../_community/lib');
-const { LiveSupply } = require('../../_community/clerk');
+/** The shared workspace engines are not part of this repo: a fresh clone must
+ *  not crash on import, so their absence is explained at the first call. */
+const engines = (() => {
+  const load = (rel, keys) => {
+    try {
+      return require(rel);
+    } catch (e) {
+      const hint = `this tool needs the workspace engine (${rel}) — a fresh clone of this repo does not ship it`;
+      const unavailable = () => {
+        console.error(hint);
+        process.exit(2);
+      };
+      return Object.fromEntries(keys.map((k) => [k, unavailable]));
+    }
+  };
+  return { lib: load('../../_community/lib', ['loadExits', 'ExitPool', 'req', 'appendLine', 'writeJson', 'nowIso', 'sleep']), clerk: load('../../_community/clerk', ['LiveSupply']) };
+})();
+const { loadExits, ExitPool, req, appendLine, writeJson, nowIso, sleep } = engines.lib;
+const { LiveSupply } = engines.clerk;
 
-const P = path.join(__dirname);
+const P = path.resolve(__dirname, '..'); // data root (the repo root)
 const KEYS = path.join(P, 'keys.txt');
 const ACC = path.join(P, 'accounts.json');
 const LOG = path.join(P, 'out', 'rescue.log');
@@ -19,7 +36,18 @@ const ORIGIN = 'https://completions.me';
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36';
 const log = (...a) => { const l = '[' + nowIso() + '] ' + a.join(' '); console.log(l); appendLine(LOG, l); };
 
-const accounts = JSON.parse(fs.readFileSync(ACC, 'utf8'));
+/** accounts.json comes from a run — say what is missing instead of spilling a
+ *  raw ENOENT trace in a fresh clone. */
+const readOrExit = (file) => {
+  try {
+    return fs.readFileSync(file, 'utf8');
+  } catch (e) {
+    console.error(`${path.basename(file)} not found at ${file} — mint a batch first (node src/mint-node.js), then re-run this tool`);
+    process.exit(2);
+  }
+};
+
+const accounts = JSON.parse(readOrExit(ACC));
 const targets = accounts.filter((a) => a.username && a.password && a.steps && a.steps.register && a.steps.register.status === 200 && !a.key);
 log('rescue targets: ' + targets.map((a) => a.index + ':' + a.username).join(' '));
 

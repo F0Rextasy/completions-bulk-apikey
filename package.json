@@ -5,16 +5,17 @@
   "license": "MIT",
   "type": "commonjs",
   "bin": {
-    "completions-bulk-apikey": "cli.js",
-    "completions-bulk-apikey-launcher": "launcher.js"
+    "completions-bulk-apikey": "src/cli.js",
+    "completions-bulk-apikey-launcher": "src/launcher.js"
   },
-  "main": "cli.js",
+  "main": "src/cli.js",
   "engines": {
     "node": ">=18"
   },
   "scripts": {
-    "start": "node launcher.js",
-    "mint": "node cli.js"
+    "start": "node src/launcher.js",
+    "mint": "node src/cli.js",
+    "9router": "node src/connect-9router.js"
   },
   "keywords": [
     "api-key",
@@ -26,17 +27,7 @@
     "apikey"
   ],
   "files": [
-    "cdp.js",
-    "chrome-flags.js",
-    "cli.js",
-    "launcher.js",
-    "mint-node.js",
-    "mint.js",
-    "proxy.js",
-    "reconcile.js",
-    "rescue.js",
-    "verify.js",
-    "connect-9router.js",
+    "src",
     "README.md",
     "LICENSE"
   ]
