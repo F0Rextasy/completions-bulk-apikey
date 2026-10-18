@@ -6,6 +6,7 @@
   "type": "commonjs",
   "bin": {
     "completions-bulk-apikey": "src/cli.js",
+    "completions-bulk-apikey-9router": "src/connect-9router.js",
     "completions-bulk-apikey-launcher": "src/launcher.js"
   },
   "main": "src/cli.js",
