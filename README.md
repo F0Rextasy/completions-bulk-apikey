@@ -175,6 +175,14 @@ The launcher keeps `count` (mints per run) and `conc` (parallel mints, default `
 
 `--count N` takes any N: the quota lives on the account, so one account is one key.
 
+## ⚡ Run shape (presets)
+
+`--preset=turbo|balanced|safe` sets workers + the pause between accounts (turbo = 5,
+balanced = 4, safe = 2); explicit `--conc`/`--gap` (or the repo's own flags) always win,
+and without `--preset` the tool keeps its historical shape exactly.
+
+Turbo önerilir (5 worker); daha fazlası zayıf bilgisayarda yük/ban riski.
+
 ## 🛰️ Behind a proxy
 
 Every panel call goes through a line from `proxies.txt` (one exit per line — `scheme://host:port[#comment]`, `user:pass@` supported, bare `host:port` accepted). Each attempt preflights its exit against `completions.me` immediately before use, and a line that dies mid-flow costs one attempt, not the run — `finish` picks the account back up on a fresh exit.

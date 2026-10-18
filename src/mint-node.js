@@ -33,6 +33,9 @@ const engine = (() => {
   }
 })();
 const { loadExits, ExitPool, req, sleep, randHex, randPass, nowIso, appendLine, readJson, writeJson, extractCode } = engine;
+const { presetArgv, resolvePreset } = require('./preset');
+const { uaFor } = require('./ua-pool');
+const numArg = (v) => (v == null || v === true || Number.isNaN(parseInt(v, 10)) ? null : parseInt(v, 10));
 
 const argv = process.argv.slice(2);
 const one = (n, d) => {
@@ -52,7 +55,19 @@ const DIR = path.resolve(__dirname, '..'); // data root (the repo root)
 const KEYS = path.join(DIR, 'keys.txt');
 const ACCOUNTS = path.join(DIR, 'accounts.json');
 const LOG = path.join(DIR, 'out', `mint-node-${new Date().toISOString().slice(0, 10)}.log`);
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36';
+const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36'; // fallback; per-account UA comes from ua-pool
+// Presets (operator standard v3): turbo = 5 accounts in flight, balanced = 4,
+// safe = 2; explicit --conc/--gap win; without --preset the rail keeps today's
+// shape exactly (one account at a time with a 1.5 s pad).
+const presetRun = resolvePreset({
+  preset: one('preset', null) || presetArgv(),
+  conc: numArg(one('conc', null)),
+  gap: numArg(one('gap', null)),
+  defaultConc: 1,
+  defaultGap: 1.5,
+});
+const CONC = Math.max(1, presetRun.conc);
+const GAP_MS = Math.max(0, presetRun.gap) * 1000;
 
 const accounts = readJson(ACCOUNTS, []);
 function log(...a) {
@@ -62,8 +77,9 @@ function log(...a) {
 }
 
 class Client {
-  constructor(pool) {
+  constructor(pool, ua) {
     this.pool = pool;
+    this.ua = ua || UA; // per-account fingerprint UA from the ua-pool
     this.cookie = '';
   }
   async call(pathname, { method = 'GET', body = null, tries = 8, timeoutMs = 20000 } = {}) {
@@ -74,7 +90,7 @@ class Client {
           body,
           headers: {
             accept: 'application/json, text/plain, */*',
-            'user-agent': UA,
+            'user-agent': this.ua,
             origin: ORIGIN,
             referer: ORIGIN + '/register',
             ...(this.cookie ? { cookie: this.cookie } : {}),
@@ -136,7 +152,12 @@ async function main() {
   const pool = new ExitPool(exits, { label: 'completions' });
   log(`exits ${exits.length} · origin ${ORIGIN}`);
   const made = [];
-  for (let i = 0; i < COUNT; i++) {
+  console.log(`COMPLETIONS-ME start · count=${COUNT} conc=${CONC} gap=${GAP_MS / 1000}s${presetRun.name ? ` preset=${presetRun.name}` : ''}`);
+  let next = 0;
+  async function worker() {
+  while (true) {
+    const i = next++;
+    if (i >= COUNT) return;
     // Naming + collision policy (toolchain-scale): `cw` + crypto-hex + base36 tail
     // (18 chars total), asserted unique against accounts.json *before* the
     // request — a taken name looks exactly like "registration mysteriously
@@ -151,8 +172,9 @@ async function main() {
     const password = randPass();
     const rec = { provider: 'completions-me', index: accounts.length + 1, username, password, created: nowIso(), steps: {} };
     log(`#${rec.index} ${username}`);
+    console.log(`… #${rec.index} başladı (pool ${exits.length} exits)`);
     try {
-      const client = new Client(pool);
+      const client = new Client(pool, uaFor(rec.index).ua);
       const reg = await client.call('/api/auth/register', { method: 'POST', body: { username, password }, tries: 8 });
       rec.steps.register = { status: reg.status, body: reg.text.slice(0, 200), cookie: !!client.cookie, exit: reg.exit };
       log(`  register ${reg.status} ${reg.text.slice(0, 140)} cookie=${!!client.cookie}`);
@@ -160,6 +182,7 @@ async function main() {
         rec.status = 'register-refused';
         accounts.push(rec);
         writeJson(ACCOUNTS, accounts);
+        console.log(`✗ #${rec.index} key yok: register-refused (${reg.status})`);
         continue;
       }
       // "hollow account" check (Cohere/ZenMux pattern): a 200 on register means
@@ -180,6 +203,7 @@ async function main() {
         rec.status = 'hollow-account';
         accounts.push(rec);
         writeJson(ACCOUNTS, accounts);
+        console.log(`✗ #${rec.index} key yok: hollow-account (session ${sess.status})`);
         continue;
       }
       const found = await discoverKeyRoute(client);
@@ -189,12 +213,13 @@ async function main() {
         rec.status = 'no-key';
         accounts.push(rec);
         writeJson(ACCOUNTS, accounts);
+        console.log(`✗ #${rec.index} key yok: no key route answered`);
         continue;
       }
       rec.key = found.key;
       // own-API verification
       const models = await pool.attempt(
-        async (p) => req(p, `${ORIGIN}/api/v1/models`, { headers: { authorization: `Bearer ${found.key}`, accept: 'application/json', 'user-agent': UA }, timeoutMs: 25000 }),
+        async (p) => req(p, `${ORIGIN}/api/v1/models`, { headers: { authorization: `Bearer ${found.key}`, accept: 'application/json', 'user-agent': uaFor(rec.index).ua }, timeoutMs: 25000 }),
         { tries: 6, label: 'models' }
       );
       rec.verify = { host: new URL(ORIGIN).host, endpoint: '/v1/models', status: models.status, text: String(models.text).slice(0, 240) };
@@ -204,6 +229,7 @@ async function main() {
         if (!fs.existsSync(KEYS) || !fs.readFileSync(KEYS, 'utf8').includes(found.key)) appendLine(KEYS, found.key);
         made.push(found.key);
         if (!fs.existsSync(path.join(__dirname, 'models.json'))) writeJson(path.join(__dirname, 'models.json'), { at: nowIso(), base: ORIGIN, body: models.text.slice(0, 20000) });
+        console.log(`✓ #${rec.index} KEY ALINDI: ${String(found.key).slice(0, 22)}… [${made.length} ok / ${COUNT} deneme]`);
       } else {
         rec.status = 'key-unverified';
       }
@@ -213,10 +239,13 @@ async function main() {
       log(`  ✖ ${rec.error}`);
     }
     accounts.push(rec);
+    if (rec.status !== 'minted') console.log(`✗ #${rec.index} key yok: ${rec.status}${rec.error ? ' — ' + String(rec.error).slice(0, 120) : ''}`);
     writeJson(ACCOUNTS, accounts);
-    await sleep(1500);
+    if (GAP_MS) await sleep(GAP_MS);
+    }
   }
-  log(`done: completions.me — ${made.length} new key(s), ${accounts.filter((a) => a.status === 'minted').length} minted account(s) total`);
+  await Promise.all(Array.from({ length: Math.min(CONC, COUNT) }, () => worker()));
+  console.log(`COMPLETIONS-ME ${made.length}/${COUNT} OK`);
 }
 
 main().catch((e) => {
