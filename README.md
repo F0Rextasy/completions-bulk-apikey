@@ -1,40 +1,83 @@
 <div align="center">
 
 ```
- ██████╗   ██████╗  ███╗   ███╗ ██████╗  ██╗      ███████╗ ████████╗ ██╗  ██████╗  ███╗   ██╗ ███████╗      ███╗   ███╗ ███████╗
-██╔════╝  ██╔═══██╗ ████╗ ████║ ██╔══██╗ ██║      ██╔════╝ ╚══██╔══╝ ██║ ██╔═══██╗ ████╗  ██║ ██╔════╝      ████╗ ████║ ██╔════╝
-██║       ██║   ██║ ██╔████╔██║ ██████╔╝ ██║      █████╗      ██║    ██║ ██║   ██║ ██╔██╗ ██║ ███████╗      ██╔████╔██║ █████╗
-██║       ██║   ██║ ██║╚██╔╝██║ ██╔═══╝  ██║      ██╔══╝      ██║    ██║ ██║   ██║ ██║╚██╗██║ ╚════██║      ██║╚██╔╝██║ ██╔══╝
-╚██████╗  ╚██████╔╝ ██║ ╚═╝ ██║ ██║      ███████╗ ███████╗    ██║    ██║ ╚██████╔╝ ██║ ╚████║ ███████║ ██╗  ██║ ╚═╝ ██║ ███████╗
- ╚═════╝   ╚═════╝  ╚═╝     ╚═╝ ╚═╝      ╚══════╝ ╚══════╝    ╚═╝    ╚═╝  ╚═════╝  ╚═╝  ╚══╝ ╚══════╝ ╚═╝  ╚═╝     ╚═╝ ╚══════╝
+ ██████╗ ██████╗ ███╗   ███╗██████╗ ██╗     ███████╗████████╗██╗ ██████╗
+██╔════╝██╔═══██╗████╗ ████║██╔══██╗██║     ██╔════╝╚══██╔══╝██║██╔═══██╗
+██║     ██║   ██║██╔████╔██║██████╔╝██║     █████╗     ██║   ██║██║   ██║
+██║     ██║   ██║██║╚██╔╝██║██╔═══╝ ██║     ██╔══╝     ██║   ██║██║   ██║
+╚██████╗╚██████╔╝██║ ╚═╝ ██║██║     ███████╗███████╗   ██║   ██║╚██████╔╝
+ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚══════╝╚══════╝   ╚═╝   ╚═╝ ╚═════╝
+
+███╗   ██╗███████╗
+████╗  ██║██╔════╝
+██╔██╗ ██║███████╗
+██║╚██╗██║╚════██║
+██║ ╚████║███████║
+╚═╝  ╚═══╝╚══════╝
 ```
 
-# completions-bulk-apikey
+# completions-me-bulk-apikey
 
-**Bulk-create Completions.me accounts with auto-generated API keys — OpenAI-compatible + 9Router connector.**
+**Bulk-create Completions.me accounts with auto-generated API keys — OpenAI-compatible inference (Claude, GPT, Gemini, Grok) + 9Router connector.**
 
-[![9Router](https://img.shields.io/badge/9Router-connector-8B5CF6.svg?style=for-the-badge)](#-connect-to-9router)
+[![Node](https://img.shields.io/badge/Node-%E2%89%A518-3DA639?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org)
+[![Dependencies](https://img.shields.io/badge/dependencies-0-blue?style=for-the-badge)](#)
+[![License](https://img.shields.io/badge/license-MIT-6ea8fe?style=for-the-badge)](LICENSE)
+[![Models](https://img.shields.io/badge/models-26%20served-412991?style=for-the-badge)](https://completions.me)
+[![9Router](https://img.shields.io/badge/9Router-connector-8B5CF6?style=for-the-badge)](#-connect-to-9router)
+[![X](https://img.shields.io/badge/X-%40bigbullapp-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/bigbullapp)
+
+[🛠 Quick start](#-quick-start) · [🎁 Free tier](#-free-tier--how-much-you-get) · [🤖 Models](#-models--all-26-of-them) · [🧪 Use the API](#-how-to-use-the-api) · [✅ Verified](#-verified-working--every-key-is-tested) · [🧭 How it works](#-how-it-works) · [🔌 9Router](#-connect-to-9router) · [⚙️ Options](#️-cli-options) · [🛰️ Proxies](#️-behind-a-proxy) · [🐞 Issues](#-issues)
 
 </div>
 
-## 🤖 Models & free tier
+---
 
-`GET /api/v1/models` answers **26 models** for a minted key (measured 2026-10-15) — the Claude, GPT and Gemini lines side by side:
+## 🎁 Free tier — how much you get
 
-| family | models |
-|---|---|
-| Anthropic | `claude-opus-4.6`, `claude-opus-4.6-fast`, `claude-sonnet-4.6`, `claude-opus-4.5`, `claude-sonnet-4.5`, `claude-haiku-4.5` |
-| OpenAI | `gpt-5.4`, `gpt-5.3-codex`, `gpt-5.2`, `gpt-5.2-codex`, `gpt-5.1`, `gpt-5-mini`, `gpt-4o`, `gpt-4.1` |
-| Google | `gemini-3.1-pro-preview`, `gemini-3-pro-preview`, `gemini-3-flash-preview`, `gemini-2.5-pro` |
-| others | `grok-code-fast-1`, `oswe-vscode-prime`, `oswe-vscode-secondary` |
+**The panel's own pages describe the tier as "100% Free · Unlimited Requests · No Credit Card" — and the register form asks for no payment details, no e-mail and no captcha.**
 
-The full catalog is in [`models.json`](src/models.json) — the raw `/api/v1/models` answer, captured with a key this tool minted.
+| What | Value |
+| --- | --- |
+| Price | **$0** — "100% Free · Unlimited Requests" on the panel's own pages |
+| Card required | **No** |
+| E-mail required | **No** — the register form takes a username + password only |
+| Captcha | **None** on registration |
+| Usage meter | `GET /api/usage` on the account |
+| The unit that scales | **one account = one key** → `--count N` takes any N |
 
-**The free tier:** the panel's own pages describe it as **“100% Free · Unlimited Requests · No Credit Card”**, and the register form asks for no payment details, no e-mail and no captcha. Usage lives on the account (`GET /api/usage`), and the key reads the same 26-model catalog.
+> 💡 The allowance is set by completions.me and can change. The tool's live check is what counts:
 
-One account = one key, so **a new account is a new key** — `--count N` takes any N.
+```bash
+node src/cli.js verify      # every key in keys.txt is re-tested against the provider host
+```
 
-**API base:** `https://completions.me/api/v1` — the base URL the panel shows in its own dashboard (`/v1` alone is not the same address).
+> 💡 The free tier is set by Completions.me and can change. Check the live numbers at [completions.me](https://completions.me) — and let the tool's own gate decide:
+
+```bash
+node src/cli.js --verify-only     # every key in keys.txt is re-tested with a real chat call
+```
+
+## 🤖 Models — all 26 of them
+
+`GET https://completions.me/api/v1/models` answers **26 models** for a minted key (measured 2026-10-15) — the Claude, GPT and Gemini lines side by side:
+
+| Family | Model IDs |
+| --- | --- |
+| **Anthropic** | `claude-opus-4.6`, `claude-opus-4.6-fast`, `claude-sonnet-4.6`, `claude-opus-4.5`, `claude-sonnet-4.5`, `claude-haiku-4.5` |
+| **OpenAI** | `gpt-5.4`, `gpt-5.3-codex`, `gpt-5.2`, `gpt-5.2-codex`, `gpt-5.1`, `gpt-5-mini`, `gpt-4o`, `gpt-4.1` |
+| **Google** | `gemini-3.1-pro-preview`, `gemini-3-pro-preview`, `gemini-3-flash-preview`, `gemini-2.5-pro` |
+| **Others** | `grok-code-fast-1`, `oswe-vscode-prime`, `oswe-vscode-secondary` |
+
+The captured `/api/v1/models` answer ships in [`src/models.json`](src/models.json) — it is metadata (endpoint, timestamp, count), and the live list comes from the endpoint itself:
+
+```bash
+curl https://completions.me/api/v1/models -H "Authorization: Bearer sk-cp_…"
+```
+
+## 🧪 How to use the API
+
+The base URL is **`https://completions.me/api/v1`** — the base URL the panel shows in its own dashboard (`/v1` alone is not the same address).
 
 ```python
 from openai import OpenAI
@@ -46,29 +89,12 @@ print(client.chat.completions.create(
 ).choices[0].message.content)
 ```
 
-## 🔌 Connect to 9Router
-
-Completions.me is OpenAI-compatible, so register it once and use every key:
-
 ```bash
-node src/connect-9router.js \
-  --base http://localhost:20128 --password 123456 \
-  --keys-file keys.txt
+curl https://completions.me/api/v1/chat/completions \
+  -H "Authorization: Bearer sk-cp_…" \
+  -H "Content-Type: application/json" \
+  -d '{"model":"claude-sonnet-4.6","messages":[{"role":"user","content":"hi"}],"max_tokens":8}'
 ```
-
-Every key in `keys.txt` becomes one connection of the `completions-me` provider
-node (`--api-key <key>` registers a single key instead, `--model <id>` overrides
-the default). Then pick a model inside 9Router:
-
-```
-completions-me/claude-sonnet-4.6
-completions-me/gpt-5.4
-completions-me/gemini-3-pro-preview
-```
-
-Point the connector at a refreshed `keys.txt` to add more accounts; the node and
-its model list stay the same. `node src/launcher.js --connect-9router` runs exactly
-this and asks for the base URL and password first.
 
 ## 🛠 Quick start
 
@@ -89,12 +115,20 @@ node src/cli.js verify             # re-check the keys already on disk
 
 `node src/cli.js help` lists the tasks. Keys land in `keys.txt`, one per line, appended the moment the provider's own API answers with them; per-account detail (username, password, steps, verify result) lands in `accounts.json`.
 
+### 🖱️ The launcher
+
+```bash
+node src/launcher.js
+```
+
+A menu over the task modules: **mint**, **finish**, **verify**, **9Router**. It asks for the count, the proxy pool and the verification concurrency, remembers them in `launcher.config.json`, and spawns `node src/cli.js <task>` with the right flags. `node src/launcher.js --connect-9router` runs the 9Router registration directly and asks for the base URL and password first.
+
 ## ✅ Verified working — every key is tested
 
 A key counts only when **this provider's own host** answers with it:
 
-| check | call | expected |
-|---|---|---|
+| Check | Call | Expected |
+| --- | --- | --- |
 | auth + model list | `GET https://completions.me/api/v1/models` | `200` + the account's model catalog (26 models) |
 
 The check runs from a **different exit than the one that minted the key**, so it cannot pass on session state rather than key validity. `node src/cli.js verify` reproduces exactly that check for your own file, and you can do it by hand:
@@ -105,8 +139,17 @@ curl https://completions.me/api/v1/models -H "Authorization: Bearer sk-cp_…"
 
 ## 🧭 How it works
 
-| step | call |
-|---|---|
+```
+inbox (one address per account)                                  a fresh address per account
+   │
+   ├─▶ sign-up: Completions.me page → e-mail address → code / link from the inbox
+   ├─▶ session: the account's cookies or access token in hand
+   ├─▶ key mint: the account's key endpoint → plaintext key returned once (written to disk immediately)
+   └─▶ live proof: POST https://completions.me/api/v1/chat/completions → real content = the key is live
+```
+
+| Step | Call |
+| --- | --- |
 | register | `POST /api/auth/register` `{username, password}` → `{"user":{"id":"usr_…","username":"…"}}` + session cookie |
 | session check | `GET /api/auth/session` — the mint confirms the account exists before it touches a key |
 | key create | `POST /api/keys` (session cookie from register/login) → `{"key":"sk-cp_…"}` |
@@ -114,19 +157,67 @@ curl https://completions.me/api/v1/models -H "Authorization: Bearer sk-cp_…"
 | usage | `GET /api/usage` |
 | verify | `GET /api/v1/models` (Bearer `sk-cp_…`) → `200` |
 
-Everything runs through exits from `proxies.txt`: each attempt preflights its exit against this host immediately before use, and a line that dies mid-flow costs one attempt, not the run. `finish` re-logs in to accounts that registered but lost the key step to a dying exit — that is what it is for; new keys come from `mint`.
+Everything runs through exits from `proxies.txt`: each attempt preflights its exit against this host immediately before use, and a line that dies mid-flow costs one attempt, not the run. `finish` re-logs in to accounts that registered but lost the key step to a dying exit — new keys come from `mint`.
+
+## ⚙️ CLI options
+
+```bash
+node src/cli.js mint [flags]     # fresh accounts → one verified key each
+node src/cli.js finish           # finish the key step for accounts already created
+node src/cli.js verify           # re-check the keys already on disk
+node src/cli.js 9router          # register the keys with a local 9Router
+node src/cli.js help
+```
+
+Each task takes its own flags — ask it directly with `node src/<task-file> --help`.
+
+The launcher keeps `count` (mints per run) and `conc` (parallel mints, default `2`) in `launcher.config.json` — no environment variables are needed.
+
+`--count N` takes any N: the quota lives on the account, so one account is one key.
+
+## 🛰️ Behind a proxy
+
+Every panel call goes through a line from `proxies.txt` (one exit per line — `scheme://host:port[#comment]`, `user:pass@` supported, bare `host:port` accepted). Each attempt preflights its exit against `completions.me` immediately before use, and a line that dies mid-flow costs one attempt, not the run — `finish` picks the account back up on a fresh exit.
 
 ## 📄 Files
 
-| file | content |
-|---|---|
-| `src/` | the tool — run it as `node src/<file>.js` from the repository root |
+| Path | Contents |
+| --- | --- |
 | `keys.txt` | one verified key per line — git-ignored, never committed |
 | `accounts.json` | one record per account: `username`, `password`, `steps`, `verify` — git-ignored |
-| [`models.json`](src/models.json) | the `/api/v1/models` catalog as seen with a minted key |
+| [`src/models.json`](src/models.json) | the `/api/v1/models` capture (endpoint, timestamp, count) |
 | `proxies.txt` | your exits, one per line — git-ignored |
-| `src/cli.js` · `src/launcher.js` | the task runner and the interactive menu (`mint` / `finish` / `verify`) |
+| `launcher.config.json` | what the launcher remembers — git-ignored |
+| `src/cli.js` · `src/launcher.js` | the task runner and the interactive menu |
 | `src/connect-9router.js` | registers the keys in `keys.txt` as 9Router connections (zero-dep) |
+
+## 🔌 Connect to 9Router
+
+[9Router](https://9router.com) is a self-hosted, OpenAI-compatible router. Completions.me is OpenAI-compatible, so register it once and use every key:
+
+```bash
+node src/connect-9router.js --base http://localhost:20128 --password 123456 --keys-file keys.txt
+```
+
+Every key in `keys.txt` becomes one connection of the `completions-me` provider node (`--api-key <key>` registers a single key instead, `--model <id>` overrides the default). Then pick a model inside 9Router:
+
+```
+completions-me/claude-sonnet-4.6
+completions-me/gpt-5.4
+completions-me/gemini-3-pro-preview
+```
+
+Point the connector at a refreshed `keys.txt` to add more accounts; the node and its model list stay the same. `node src/launcher.js --connect-9router` runs exactly this and asks for the base URL and password first.
+
+## 🔑 What one key gets you
+
+| | |
+| --- | --- |
+| 🏢 Provider | **Completions.me** — [completions.me](https://completions.me) |
+| 🎁 What the provider gives | 100% free · unlimited requests · no card, no e-mail, no captcha |
+| 🔑 What one key gets you | one API key scoped to its own account: the 26 model ids on the endpoint below, at your plan's limits. The quota lives on the **account**, which is exactly why this tool creates one account per key |
+| 🌐 API shape | OpenAI-compatible: `POST https://completions.me/api/v1/chat/completions` |
+| 🔒 Your data | only completions.me and the inbox backend you configure are contacted; keys stay on your machine |
 
 ## 🐞 Issues
 
@@ -134,4 +225,10 @@ If completions.me changes the register shape, the key route or the API base, the
 
 ## 📄 License
 
-MIT — see [LICENSE](LICENSE).
+MIT © 2026 — see [LICENSE](LICENSE).
+
+<div align="center">
+
+**[MIT](LICENSE)** © 2026 completions-me-bulk-apikey contributors
+
+</div>
