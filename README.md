@@ -31,6 +31,19 @@
 
 </div>
 
+<div align="center">
+
+**English** · [Türkçe](README.tr.md) · [中文](README.cn.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Español](README.es.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Русский](README.ru.md) · [Português](README.pt.md)
+
+</div>
+
+
+
+
+
+
+
+
 ---
 
 ## 🎁 Free tier — how much you get
@@ -60,14 +73,7 @@ node src/cli.js --verify-only     # every key in keys.txt is re-tested with a re
 
 ## 🤖 Models — all 26 of them
 
-`GET https://completions.me/api/v1/models` answers **26 models** for a minted key (measured 2026-10-15) — the Claude, GPT and Gemini lines side by side:
-
-| Family | Model IDs |
-| --- | --- |
-| **Anthropic** | `claude-opus-4.6`, `claude-opus-4.6-fast`, `claude-sonnet-4.6`, `claude-opus-4.5`, `claude-sonnet-4.5`, `claude-haiku-4.5` |
-| **OpenAI** | `gpt-5.4`, `gpt-5.3-codex`, `gpt-5.2`, `gpt-5.2-codex`, `gpt-5.1`, `gpt-5-mini`, `gpt-4o`, `gpt-4.1` |
-| **Google** | `gemini-3.1-pro-preview`, `gemini-3-pro-preview`, `gemini-3-flash-preview`, `gemini-2.5-pro` |
-| **Others** | `grok-code-fast-1`, `oswe-vscode-prime`, `oswe-vscode-secondary` |
+`GET https://completions.me/api/v1/models` answers **26 models** for a minted key (measured 2026-10-15) — the full list is captured in [`src/models.json`](src/models.json), and this build verifies a key against `GET /models` (the chat check is opt-in via `verify --chat`), so no id carries a tick here yet.
 
 The captured `/api/v1/models` answer ships in [`src/models.json`](src/models.json) — it is metadata (endpoint, timestamp, count), and the live list comes from the endpoint itself:
 
