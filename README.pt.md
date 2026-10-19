@@ -37,14 +37,6 @@
 
 </div>
 
-
-
-
-
-
-
-
-
 ---
 
 ## 🎁 Plano gratuito — quanto você recebe

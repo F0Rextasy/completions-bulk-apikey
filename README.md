@@ -37,13 +37,6 @@
 
 </div>
 
-
-
-
-
-
-
-
 ---
 
 ## 🎁 Free tier — how much you get
