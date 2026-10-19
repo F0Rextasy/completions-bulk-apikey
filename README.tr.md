@@ -37,28 +37,22 @@
 
 </div>
 
-<div align="center">
-
-[English](README.md) · **Türkçe** · [中文](README.cn.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Español](README.es.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Русский](README.ru.md) · [Português](README.pt.md)
-
-</div>
-
 ---
 
 ## 🎁 Ücretsiz katman — ne kadar alırsınız
 
-**Panelin kendi sayfaları bu katmanı "100% Free · Unlimited Requests · No Credit Card" olarak tanımlıyor — ve kayıt formu hiçbir ödeme bilgisi, e-posta veya captcha istemiyor.**
+**Panelin kendi sayfaları katmanı "100% Free · Unlimited Requests · No Credit Card" olarak tanımlıyor — ve kayıt formu hiçbir ödeme bilgisi, e-posta veya captcha istemiyor.**
 
 | Ne | Değer |
 | --- | --- |
 | Fiyat | **$0** — panelin kendi sayfalarında "100% Free · Unlimited Requests" |
 | Kart gerekli | **Hayır** |
 | E-posta gerekli | **Hayır** — kayıt formu yalnızca kullanıcı adı + parola alır |
-| Captcha | Kayıtta **yok** |
+| Captcha | Kayıtta **Yok** |
 | Kullanım ölçer | Hesapta `GET /api/usage` |
 | Ölçeklenen birim | **bir hesap = bir anahtar** → `--count N` herhangi bir N değerini alır |
 
-> 💡 Kota completions.me tarafından belirlenir ve değişebilir. Geçerli olan, aracın canlı kontrolüdür:
+> 💡 Kota completions.me tarafından belirlenir ve değişebilir. Aracın canlı kontrolü belirleyici olandır:
 
 ```bash
 node src/cli.js verify      # every key in keys.txt is re-tested against the provider host
@@ -70,11 +64,40 @@ node src/cli.js verify      # every key in keys.txt is re-tested against the pro
 node src/cli.js --verify-only     # every key in keys.txt is re-tested with a real chat call
 ```
 
-## 🤖 Modeller — 26'sının tamamı
+## 🤖 Modeller — 26 tanesinin tamamı
 
-`GET https://completions.me/api/v1/models`, oluşturulmuş bir anahtar için **26 model** yanıtlar (ölçüm: 2026-10-15) — tam liste [`src/models.json`](src/models.json) içinde yakalanmıştır ve bu yapı bir anahtarı `GET /models` ile doğrular (sohbet kontrolü `verify --chat` ile isteğe bağlıdır), bu nedenle burada henüz hiçbir kimlik işaretli değildir.
+`GET https://completions.me/api/v1/models` üretilmiş bir anahtar için **26 model** yanıtlıyor (ölçüm: 2026-10-15) — tam liste [`src/models.json`](src/models.json) dosyasında yakalanmıştır — ve her biri ayrıca 2026-10-19 tarihinde canlı bir `POST /chat/completions` `200` yanıtı verdi (26/26 deneme):
 
-Yakalanan `/api/v1/models` yanıtı [`src/models.json`](src/models.json) içinde gelir — bu bir üst veridir (uç nokta, zaman damgası, sayı) ve canlı liste uç noktanın kendisinden gelir:
+|Model|✓|
+|---|---|
+|`claude-haiku-4.5`|✓|
+|`claude-opus-4.5`|✓|
+|`claude-opus-4.6`|✓|
+|`claude-opus-4.6-fast`|✓|
+|`claude-sonnet-4`|✓|
+|`claude-sonnet-4.5`|✓|
+|`claude-sonnet-4.6`|✓|
+|`gemini-2.5-pro`|✓|
+|`gemini-3-flash-preview`|✓|
+|`gemini-3-pro-preview`|✓|
+|`gemini-3.1-pro-preview`|✓|
+|`gpt-4.1`|✓|
+|`gpt-4o`|✓|
+|`gpt-4o-mini`|✓|
+|`gpt-5-mini`|✓|
+|`gpt-5.1`|✓|
+|`gpt-5.1-codex`|✓|
+|`gpt-5.1-codex-max`|✓|
+|`gpt-5.1-codex-mini`|✓|
+|`gpt-5.2`|✓|
+|`gpt-5.2-codex`|✓|
+|`gpt-5.3-codex`|✓|
+|`gpt-5.4`|✓|
+|`grok-code-fast-1`|✓|
+|`oswe-vscode-prime`|✓|
+|`oswe-vscode-secondary`|✓|
+
+Yakalanan `/api/v1/models` yanıtı [`src/models.json`](src/models.json) dosyasında gelir — bu bir üst veridir (uç nokta, zaman damgası, sayı) ve canlı liste uç noktanın kendisinden gelir:
 
 ```bash
 curl https://completions.me/api/v1/models -H "Authorization: Bearer sk-cp_…"
@@ -118,7 +141,7 @@ node src/cli.js finish             # log back in to accounts already created and
 node src/cli.js verify             # re-check the keys already on disk
 ```
 
-`node src/cli.js help` görevleri listeler. Anahtarlar `keys.txt` dosyasına, her satırda bir tane olacak şekilde, sağlayıcının kendi API'si onlarla yanıt verdiği anda eklenir; hesap başına ayrıntı (kullanıcı adı, parola, adımlar, doğrulama sonucu) `accounts.json` dosyasına yazılır.
+`node src/cli.js help` görevleri listeler. Anahtarlar `keys.txt` dosyasına düşer, her satıra bir tane, sağlayıcının kendi API'si onlarla yanıt verdiği anda eklenir; hesap başına ayrıntı (kullanıcı adı, parola, adımlar, doğrulama sonucu) `accounts.json` dosyasına düşer.
 
 ### 🖱️ Başlatıcı
 
@@ -126,7 +149,7 @@ node src/cli.js verify             # re-check the keys already on disk
 node src/launcher.js
 ```
 
-Görev modülleri üzerinde bir menü: **mint**, **finish**, **verify**, **9Router**. Sayıyı, proxy havuzunu ve doğrulama eşzamanlılığını sorar, bunları `launcher.config.json` içinde hatırlar ve `node src/cli.js <task>` komutunu doğru bayraklarla başlatır. `node src/launcher.js --connect-9router` doğrudan 9Router kaydını çalıştırır ve önce temel URL ile parolayı sorar.
+Görev modülleri üzerinde bir menü: **mint**, **finish**, **verify**, **9Router**. Sayıyı, proxy havuzunu ve doğrulama eşzamanlılığını sorar, bunları `launcher.config.json` dosyasında hatırlar ve `node src/cli.js <task>` komutunu doğru bayraklarla başlatır. `node src/launcher.js --connect-9router` doğrudan 9Router kaydını çalıştırır ve önce temel URL ile parolayı sorar.
 
 ## ✅ Çalıştığı doğrulandı — her anahtar test edilir
 
@@ -136,7 +159,7 @@ Bir anahtar yalnızca **bu sağlayıcının kendi ana makinesi** onunla yanıt v
 | --- | --- | --- |
 | kimlik doğrulama + model listesi | `GET https://completions.me/api/v1/models` | `200` + hesabın model kataloğu (26 model) |
 
-Kontrol, **anahtarı oluşturan çıkıştan farklı bir çıkıştan** çalışır, böylece anahtar geçerliliği yerine oturum durumuyla geçemez. `node src/cli.js verify` kendi dosyanız için tam olarak bu kontrolü yeniden üretir ve bunu elle de yapabilirsiniz:
+Kontrol, **anahtarı üreten çıkıştan farklı bir çıkıştan** çalışır, böylece anahtar geçerliliği yerine oturum durumuyla geçemez. `node src/cli.js verify` kendi dosyanız için tam olarak bu kontrolü yeniden üretir ve bunu elle de yapabilirsiniz:
 
 ```bash
 curl https://completions.me/api/v1/models -H "Authorization: Bearer sk-cp_…"
@@ -156,13 +179,13 @@ inbox (one address per account)                                  a fresh address
 | Adım | Çağrı |
 | --- | --- |
 | kayıt | `POST /api/auth/register` `{username, password}` → `{"user":{"id":"usr_…","username":"…"}}` + oturum çerezi |
-| oturum kontrolü | `GET /api/auth/session` — mint, bir anahtara dokunmadan önce hesabın var olduğunu doğrular |
+| oturum kontrolü | `GET /api/auth/session` — üretim, bir anahtara dokunmadan önce hesabın var olduğunu doğrular |
 | anahtar oluşturma | `POST /api/keys` (kayıt/girişten gelen oturum çerezi) → `{"key":"sk-cp_…"}` |
 | anahtar listeleme / silme | `GET /api/keys` · `DELETE /api/keys/{id}` |
 | kullanım | `GET /api/usage` |
 | doğrulama | `GET /api/v1/models` (Bearer `sk-cp_…`) → `200` |
 
-Her şey `proxies.txt` içindeki çıkışlar üzerinden çalışır: her deneme, kullanımdan hemen önce çıkışını bu ana makineye karşı ön kontrol eder ve akış ortasında ölen bir satır bir denemeye mal olur, tüm çalıştırmaya değil. `finish`, kaydolmuş ancak anahtar adımını ölen bir çıkış yüzünden kaybetmiş hesaplara yeniden giriş yapar — yeni anahtarlar `mint` ile gelir.
+Her şey `proxies.txt` içindeki çıkışlar üzerinden çalışır: her deneme, kullanımdan hemen önce çıkışını bu ana makineye karşı ön kontrol eder ve akış ortasında ölen bir satır tüm çalıştırmaya değil, bir denemeye mal olur. `finish`, kaydolmuş ancak anahtar adımını ölen bir çıkış yüzünden kaybetmiş hesaplara yeniden giriş yapar — yeni anahtarlar `mint`'ten gelir.
 
 ## ⚙️ CLI seçenekleri
 
@@ -176,7 +199,7 @@ node src/cli.js help
 
 Her görev kendi bayraklarını alır — doğrudan `node src/<task-file> --help` ile sorun.
 
-Başlatıcı, `count` (çalıştırma başına mint sayısı) ve `conc` (paralel mint sayısı, varsayılan `2`) değerlerini `launcher.config.json` içinde tutar — hiçbir ortam değişkeni gerekmez.
+Başlatıcı, `count` (çalıştırma başına üretim) ve `conc` (paralel üretim, varsayılan `2`) değerlerini `launcher.config.json` dosyasında tutar — hiçbir ortam değişkeni gerekmez.
 
 `--count N` herhangi bir N değerini alır: kota hesapta yaşar, yani bir hesap bir anahtardır.
 
@@ -190,23 +213,23 @@ Turbo önerilir (5 worker); daha fazlası zayıf bilgisayarda yük/ban riski.
 
 ## 🛰️ Proxy arkasında
 
-Her panel çağrısı `proxies.txt` içindeki bir satırdan geçer (her satırda bir çıkış — `scheme://host:port[#comment]`, `user:pass@` desteklenir, çıplak `host:port` kabul edilir). Her deneme, kullanımdan hemen önce çıkışını `completions.me` adresine karşı ön kontrol eder ve akış ortasında ölen bir satır bir denemeye mal olur, tüm çalıştırmaya değil — `finish` hesabı yeni bir çıkışta yeniden ele alır.
+Her panel çağrısı `proxies.txt` içindeki bir satırdan geçer (her satıra bir çıkış — `scheme://host:port[#comment]`, `user:pass@` desteklenir, çıplak `host:port` kabul edilir). Her deneme, kullanımdan hemen önce çıkışını `completions.me` adresine karşı ön kontrol eder ve akış ortasında ölen bir satır tüm çalıştırmaya değil, bir denemeye mal olur — `finish` hesabı yeni bir çıkışta yeniden ele alır.
 
 ## 📄 Dosyalar
 
 | Yol | İçerik |
 | --- | --- |
-| `keys.txt` | her satırda bir doğrulanmış anahtar — git tarafından yok sayılır, asla işlenmez |
+| `keys.txt` | her satıra bir doğrulanmış anahtar — git tarafından yok sayılır, asla işlenmez |
 | `accounts.json` | hesap başına bir kayıt: `username`, `password`, `steps`, `verify` — git tarafından yok sayılır |
 | [`src/models.json`](src/models.json) | `/api/v1/models` yakalaması (uç nokta, zaman damgası, sayı) |
-| `proxies.txt` | çıkışlarınız, her satırda bir tane — git tarafından yok sayılır |
+| `proxies.txt` | çıkışlarınız, her satıra bir tane — git tarafından yok sayılır |
 | `launcher.config.json` | başlatıcının hatırladıkları — git tarafından yok sayılır |
 | `src/cli.js` · `src/launcher.js` | görev çalıştırıcısı ve etkileşimli menü |
 | `src/connect-9router.js` | `keys.txt` içindeki anahtarları 9Router bağlantıları olarak kaydeder (sıfır bağımlılık) |
 
 ## 🔌 9Router'a bağlanma
 
-[9Router](https://9router.com) kendi kendine barındırılan, OpenAI uyumlu bir yönlendiricidir. Completions.me OpenAI uyumludur, bu nedenle bir kez kaydedin ve her anahtarı kullanın:
+[9Router](https://9router.com) kendi kendine barındırılan, OpenAI uyumlu bir yönlendiricidir. Completions.me OpenAI uyumludur, bu yüzden bir kez kaydedin ve her anahtarı kullanın:
 
 ```bash
 node src/connect-9router.js --base http://localhost:20128 --password 123456 --keys-file keys.txt
@@ -228,9 +251,9 @@ Daha fazla hesap eklemek için bağlayıcıyı yenilenmiş bir `keys.txt` dosyas
 | --- | --- |
 | 🏢 Sağlayıcı | **Completions.me** — [completions.me](https://completions.me) |
 | 🎁 Sağlayıcının verdikleri | 100% ücretsiz · sınırsız istek · kart yok, e-posta yok, captcha yok |
-| 🔑 Bir anahtar size ne kazandırır | kendi hesabına kapsanmış bir API anahtarı: aşağıdaki uç noktada 26 model kimliği, planınızın sınırlarında. Kota **hesapta** yaşar, bu aracın anahtar başına bir hesap oluşturmasının nedeni tam olarak budur |
+| 🔑 Bir anahtar size ne kazandırır | kendi hesabına kapsanmış bir API anahtarı: aşağıdaki uç noktadaki 26 model kimliği, planınızın limitlerinde. Kota **hesapta** yaşar, bu aracın anahtar başına bir hesap oluşturmasının nedeni tam olarak budur |
 | 🌐 API biçimi | OpenAI uyumlu: `POST https://completions.me/api/v1/chat/completions` |
-| 🔒 Verileriniz | yalnızca completions.me ve yapılandırdığınız gelen kutusu arka ucuna bağlanılır; anahtarlar makinenizde kalır |
+| 🔒 Verileriniz | yalnızca completions.me ve yapılandırdığınız inbox arka ucuna bağlanılır; anahtarlar makinenizde kalır |
 
 ## 🐞 Sorunlar
 

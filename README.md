@@ -66,7 +66,36 @@ node src/cli.js --verify-only     # every key in keys.txt is re-tested with a re
 
 ## 🤖 Models — all 26 of them
 
-`GET https://completions.me/api/v1/models` answers **26 models** for a minted key (measured 2026-10-15) — the full list is captured in [`src/models.json`](src/models.json), and this build verifies a key against `GET /models` (the chat check is opt-in via `verify --chat`), so no id carries a tick here yet.
+`GET https://completions.me/api/v1/models` answers **26 models** for a minted key (measured 2026-10-15) — the full list is captured in [`src/models.json`](src/models.json) — and every one of them also answered a live `POST /chat/completions` `200` on 2026-10-19 (26/26 probes):
+
+|Model|✓|
+|---|---|
+|`claude-haiku-4.5`|✓|
+|`claude-opus-4.5`|✓|
+|`claude-opus-4.6`|✓|
+|`claude-opus-4.6-fast`|✓|
+|`claude-sonnet-4`|✓|
+|`claude-sonnet-4.5`|✓|
+|`claude-sonnet-4.6`|✓|
+|`gemini-2.5-pro`|✓|
+|`gemini-3-flash-preview`|✓|
+|`gemini-3-pro-preview`|✓|
+|`gemini-3.1-pro-preview`|✓|
+|`gpt-4.1`|✓|
+|`gpt-4o`|✓|
+|`gpt-4o-mini`|✓|
+|`gpt-5-mini`|✓|
+|`gpt-5.1`|✓|
+|`gpt-5.1-codex`|✓|
+|`gpt-5.1-codex-max`|✓|
+|`gpt-5.1-codex-mini`|✓|
+|`gpt-5.2`|✓|
+|`gpt-5.2-codex`|✓|
+|`gpt-5.3-codex`|✓|
+|`gpt-5.4`|✓|
+|`grok-code-fast-1`|✓|
+|`oswe-vscode-prime`|✓|
+|`oswe-vscode-secondary`|✓|
 
 The captured `/api/v1/models` answer ships in [`src/models.json`](src/models.json) — it is metadata (endpoint, timestamp, count), and the live list comes from the endpoint itself:
 
