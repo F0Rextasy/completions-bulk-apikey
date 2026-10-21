@@ -28,6 +28,11 @@ const engines = (() => {
 const { loadExits, ExitPool, req, appendLine, writeJson, nowIso, sleep } = engines.lib;
 const { LiveSupply } = engines.clerk;
 
+if (process.argv.includes('--help') || process.argv.includes('-h')) {
+  console.log('usage: node src/rescue.js   (no flags — re-derives the key of every account in accounts.json that has none)');
+  process.exit(0);
+}
+
 const P = path.resolve(__dirname, '..'); // data root (the repo root)
 const KEYS = path.join(P, 'keys.txt');
 const ACC = path.join(P, 'accounts.json');

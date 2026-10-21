@@ -61,7 +61,7 @@ node src/cli.js verify      # every key in keys.txt is re-tested against the pro
 > 💡 무료 티어는 Completions.me에서 설정하며 변경될 수 있습니다. [completions.me](https://completions.me)에서 실시간 수치를 확인하고, 도구 자체의 게이트가 판단하게 하세요:
 
 ```bash
-node src/cli.js --verify-only     # every key in keys.txt is re-tested with a real chat call
+node src/cli.js verify            # every key in keys.txt is re-tested with a real chat call
 ```
 
 ## 🤖 모델 — 전체 26개

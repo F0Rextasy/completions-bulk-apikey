@@ -61,7 +61,7 @@ node src/cli.js verify      # every key in keys.txt is re-tested against the pro
 > 💡 免费额度由 Completions.me 设定，并且可能变化。请在 [completions.me](https://completions.me) 查看实时数字——并让该工具自身的校验关卡来决定：
 
 ```bash
-node src/cli.js --verify-only     # every key in keys.txt is re-tested with a real chat call
+node src/cli.js verify            # every key in keys.txt is re-tested with a real chat call
 ```
 
 ## 🤖 模型——全部 26 个

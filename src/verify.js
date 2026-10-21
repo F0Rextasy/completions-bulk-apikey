@@ -20,21 +20,39 @@ const { parseProxy, fetchText } = require('./proxy.js');
 const HERE = path.resolve(__dirname, '..'); // data root (the repo root)
 const BASE = 'https://completions.me/api/v1';
 const argv = process.argv.slice(2);
+if (argv.includes('--help') || argv.includes('-h')) {
+  console.log('usage: node src/verify.js [--file keys.txt] [--pool proxies.txt] [--limit N] [--conc N] [--chat] [--model ID]');
+  process.exit(0);
+}
 const opt = (name, dflt) => {
   const i = argv.indexOf(`--${name}`);
   return i >= 0 && argv[i + 1] ? argv[i + 1] : dflt;
 };
+// A missing or non-numeric value must not become NaN: `Array.from({length: NaN})`
+// spawns no worker at all, so the run would report "verified 0/N" without asking anything.
+const int = (v, fallback) => (Number.isNaN(parseInt(v, 10)) ? fallback : parseInt(v, 10));
 
 const KEYS_FILE = path.resolve(HERE, opt('file', 'keys.txt'));
 const POOL_FILE = path.resolve(HERE, opt('pool', 'proxies.txt'));
-const LIMIT = parseInt(opt('limit', '0'), 10);
-const CONC = Math.min(parseInt(opt('conc', '4'), 10), 8);
+const LIMIT = int(opt('limit', '0'), 0);
+const CONC = Math.min(int(opt('conc', '4'), 4), 8);
 const WITH_CHAT = argv.includes('--chat');
 const MODEL = opt('model', '');
 
+/** keys.txt and proxies.txt come from a run — say what is missing instead of
+ *  spilling a raw ENOENT trace in a fresh clone. */
+const readOrExit = (file, hint) => {
+  try {
+    return fs.readFileSync(file, 'utf8');
+  } catch (e) {
+    console.error(`${path.basename(file)} not found at ${file} — ${hint}`);
+    process.exit(2);
+  }
+};
+
 function readPool() {
   const out = [];
-  for (const line of fs.readFileSync(POOL_FILE, 'utf8').split(/\r?\n/)) {
+  for (const line of readOrExit(POOL_FILE, 'one proxy per line (scheme://host:port)').split(/\r?\n/)) {
     const raw = line.split(/\s+#/)[0].trim();
     if (!raw || raw.startsWith('#')) continue;
     const url = /^[a-z]+:\/\//i.test(raw) ? raw : `http://${raw}`;
@@ -45,15 +63,18 @@ function readPool() {
 }
 
 async function verifyOne(key, pool) {
+  let lastError = '';
   for (let i = 0; i < Math.min(pool.length, 12); i++) {
     const proxy = pool[(i + Math.floor(Math.random() * pool.length)) % pool.length];
     try {
       const body = await fetchText(proxy, `${BASE}/models`, { timeoutMs: 20000, headers: { authorization: `Bearer ${key}`, accept: 'application/json' } });
-      let models = [];
-      try {
-        models = (JSON.parse(body).data || []).map((m) => m.id);
-      } catch (e) {}
-      let chat = null;
+      // fetchText resolves whatever the status is, so the verdict has to come from the
+      // body: the documented 200 is the model list, an error page or 401 JSON is not.
+      let j = null;
+      try { j = JSON.parse(body); } catch (e) {}
+      if (!j || !Array.isArray(j.data)) return { ok: false, error: `not a model list: ${String(body).slice(0, 100)}` };
+      const models = j.data.map((m) => m.id);
+      let chat = null; // read by the return below even when --chat is off
       if (WITH_CHAT && models.length) {
         const model = MODEL || models[0];
         try {
@@ -71,16 +92,14 @@ async function verifyOne(key, pool) {
       }
       return { ok: true, models: models.length, chat };
     } catch (e) {
-      const m = String(e.message || e);
-      // 401/403 is a key verdict; a CONNECT failure is an exit verdict — rotate.
-      if (/^4\d\d/.test(m) || /HTTP 40\d/.test(m)) return { ok: false, error: m.slice(0, 120) };
+      lastError = String(e.message || e).slice(0, 120); // exit verdict, not a key verdict — rotate
     }
   }
-  return { ok: false, error: 'no exit could carry the check' };
+  return { ok: false, error: lastError || 'no exit could carry the check' };
 }
 
 (async () => {
-  const keys = fs.readFileSync(KEYS_FILE, 'utf8').split(/\r?\n/).map((l) => l.trim()).filter((l) => l && !l.startsWith('#'));
+  const keys = readOrExit(KEYS_FILE, 'mint a batch first (node src/mint-node.js), then re-run this tool').split(/\r?\n/).map((l) => l.trim()).filter((l) => l && !l.startsWith('#'));
   const list = LIMIT > 0 ? keys.slice(0, LIMIT) : keys;
   const pool = readPool();
   if (!pool.length) {

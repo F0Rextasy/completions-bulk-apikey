@@ -26,6 +26,12 @@ const engine = (() => {
 })();
 const { loadExits, ExitPool, req, nowIso } = engine;
 
+const argv = process.argv.slice(2);
+if (argv.includes('--help') || argv.includes('-h')) {
+  console.log('usage: node src/reconcile.js   (no flags — rewrites keys.txt + accounts.json from the run logs)');
+  process.exit(0);
+}
+
 const P = path.resolve(__dirname, '..'); // data root (the repo root)
 const KEYS = path.join(P, 'keys.txt');
 const ACC = path.join(P, 'accounts.json');
@@ -45,7 +51,7 @@ const readOrExit = (file) => {
 
 const accounts = JSON.parse(readOrExit(ACC));
 const keyLines = readOrExit(KEYS).split('\n').filter((l) => l.trim());
-const keys = keyLines.map((l) => l.split(/\s+#/)[0].trim()).filter(Boolean);
+const keys = keyLines.map((l) => l.split(/\s+#/)[0].trim()).filter((l) => l && !l.startsWith('#'));
 const comments = new Map();
 for (const l of keyLines) { const m = l.split(/\s+#\s?/); if (m[1]) comments.set(m[0].trim(), m[1]); }
 
@@ -100,9 +106,15 @@ const pool = new ExitPool(loadExits(['proxies.txt', 'proxies.txt', 'proxies.txt'
   }
 
   // 2) honour the honest-marking rule in the key file itself
-  const rewritten = keys.map((k) => (comments.has(k) ? k + '  # ' + comments.get(k) : k)).join('\n') + '\n';
-  fs.writeFileSync(KEYS, rewritten);
-  fs.writeFileSync(ACC, JSON.stringify(accounts, null, 2));
+  const rewritten = keyLines
+    .map((l) => {
+      const k = l.split(/\s+#/)[0].trim();
+      if (!k || k.startsWith('#')) return l; // a standalone comment is not a key
+      return comments.has(k) ? k + '  # ' + comments.get(k) : k;
+    })
+    .join('\n') + '\n';
+  fs.writeFileSync(KEYS, rewritten, { mode: 0o600 });
+  fs.writeFileSync(ACC, JSON.stringify(accounts, null, 2), { mode: 0o600 });
 
   // 3) re-run the uniqueness assertion over the now-complete record set
   const names = accounts.map((a) => a.username).filter(Boolean);
@@ -114,6 +126,7 @@ const pool = new ExitPool(loadExits(['proxies.txt', 'proxies.txt', 'proxies.txt'
     sameEgress: accounts.filter((a) => a.verify && a.verify.sameEgress).length,
     usernameDupes: dupes, uniquenessHolds: dupes.length === 0, rows,
   };
+  fs.mkdirSync(path.dirname(OUT), { recursive: true });
   fs.writeFileSync(OUT, JSON.stringify(summary, null, 2));
   console.log(JSON.stringify(summary, null, 1).slice(0, 2600));
 })();

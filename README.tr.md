@@ -61,7 +61,7 @@ node src/cli.js verify      # every key in keys.txt is re-tested against the pro
 > 💡 Ücretsiz katman Completions.me tarafından belirlenir ve değişebilir. Canlı sayıları [completions.me](https://completions.me) adresinden kontrol edin — ve kararı aracın kendi kapısına bırakın:
 
 ```bash
-node src/cli.js --verify-only     # every key in keys.txt is re-tested with a real chat call
+node src/cli.js verify            # every key in keys.txt is re-tested with a real chat call
 ```
 
 ## 🤖 Modeller — 26 tanesinin tamamı

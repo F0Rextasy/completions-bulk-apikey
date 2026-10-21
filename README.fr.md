@@ -61,7 +61,7 @@ node src/cli.js verify      # every key in keys.txt is re-tested against the pro
 > 💡 L’offre gratuite est définie par Completions.me et peut changer. Consultez les chiffres en direct sur [completions.me](https://completions.me) — et laissez la propre vérification de l’outil décider :
 
 ```bash
-node src/cli.js --verify-only     # every key in keys.txt is re-tested with a real chat call
+node src/cli.js verify            # every key in keys.txt is re-tested with a real chat call
 ```
 
 ## 🤖 Modèles — tous les 26

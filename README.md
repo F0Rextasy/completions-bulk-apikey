@@ -61,7 +61,7 @@ node src/cli.js verify      # every key in keys.txt is re-tested against the pro
 > 💡 The free tier is set by Completions.me and can change. Check the live numbers at [completions.me](https://completions.me) — and let the tool's own gate decide:
 
 ```bash
-node src/cli.js --verify-only     # every key in keys.txt is re-tested with a real chat call
+node src/cli.js verify            # every key in keys.txt is re-tested with a real chat call
 ```
 
 ## 🤖 Models — all 26 of them
@@ -209,7 +209,7 @@ The launcher keeps `count` (mints per run) and `conc` (parallel mints, default `
 balanced = 4, safe = 2); explicit `--conc`/`--gap` (or the repo's own flags) always win,
 and without `--preset` the tool keeps its historical shape exactly.
 
-Turbo önerilir (5 worker); daha fazlası zayıf bilgisayarda yük/ban riski.
+Turbo is recommended (5 workers); more than that risks load and bans on a weak machine.
 
 ## 🛰️ Behind a proxy
 

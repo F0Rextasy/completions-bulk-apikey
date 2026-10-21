@@ -29,13 +29,15 @@ const engine = (() => {
       console.error(hint);
       process.exit(2);
     };
-    return { loadExits: unavailable, ExitPool: unavailable, req: unavailable, sleep: unavailable, randHex: unavailable, randPass: unavailable, nowIso: unavailable, appendLine: unavailable, readJson: unavailable, writeJson: unavailable, extractCode: unavailable };
+    return { loadExits: unavailable, ExitPool: unavailable, req: unavailable, sleep: unavailable, randHex: unavailable, randPass: unavailable, nowIso: unavailable, appendLine: unavailable, readJson: unavailable, writeJson: unavailable };
   }
 })();
-const { loadExits, ExitPool, req, sleep, randHex, randPass, nowIso, appendLine, readJson, writeJson, extractCode } = engine;
+const { loadExits, ExitPool, req, sleep, randHex, randPass, nowIso, appendLine, readJson, writeJson } = engine;
 const { presetArgv, resolvePreset } = require('./preset');
 const { uaFor } = require('./ua-pool');
-const numArg = (v) => (v == null || v === true || Number.isNaN(parseInt(v, 10)) ? null : parseInt(v, 10));
+// parseInt(true) is NaN and a NaN count runs zero accounts: reject both, and keep
+// fractions (--gap 0.5 is half a second, not 0)
+const numArg = (v) => { const n = v == null || v === true ? NaN : Number(v); return Number.isFinite(n) ? n : null; };
 
 const argv = process.argv.slice(2);
 const one = (n, d) => {
@@ -46,10 +48,14 @@ const many = (n) => {
   const out = [];
   for (let i = 0; i < argv.length; i++) if (argv[i] === `--${n}` && argv[i + 1]) out.push(argv[i + 1]);
   return out;
-};
+}
+if (argv.includes('--help') || argv.includes('-h')) {
+  console.log('usage: node src/mint-node.js [--count N] [--base URL] [--pool FILE]… [--preset=turbo|balanced|safe] [--conc N] [--gap SECONDS]');
+  process.exit(0);
+}
 
 const ORIGIN = one('base', 'https://completions.me');
-const COUNT = parseInt(one('count', '3'), 10);
+const COUNT = numArg(one('count', '3')) ?? 3;
 const POOLS = many('pool');
 const DIR = path.resolve(__dirname, '..'); // data root (the repo root)
 const KEYS = path.join(DIR, 'keys.txt');
@@ -174,7 +180,7 @@ async function main() {
     log(`#${rec.index} ${username}`);
     console.log(`… #${rec.index} başladı (pool ${exits.length} exits)`);
     try {
-      const client = new Client(pool, uaFor(rec.index).ua);
+      const client = new Client(pool, uaFor(rec.index));
       const reg = await client.call('/api/auth/register', { method: 'POST', body: { username, password }, tries: 8 });
       rec.steps.register = { status: reg.status, body: reg.text.slice(0, 200), cookie: !!client.cookie, exit: reg.exit };
       log(`  register ${reg.status} ${reg.text.slice(0, 140)} cookie=${!!client.cookie}`);
@@ -219,7 +225,7 @@ async function main() {
       rec.key = found.key;
       // own-API verification
       const models = await pool.attempt(
-        async (p) => req(p, `${ORIGIN}/api/v1/models`, { headers: { authorization: `Bearer ${found.key}`, accept: 'application/json', 'user-agent': uaFor(rec.index).ua }, timeoutMs: 25000 }),
+        async (p) => req(p, `${ORIGIN}/api/v1/models`, { headers: { authorization: `Bearer ${found.key}`, accept: 'application/json', 'user-agent': uaFor(rec.index) }, timeoutMs: 25000 }),
         { tries: 6, label: 'models' }
       );
       rec.verify = { host: new URL(ORIGIN).host, endpoint: '/v1/models', status: models.status, text: String(models.text).slice(0, 240) };
@@ -228,7 +234,6 @@ async function main() {
         rec.status = 'minted';
         if (!fs.existsSync(KEYS) || !fs.readFileSync(KEYS, 'utf8').includes(found.key)) appendLine(KEYS, found.key);
         made.push(found.key);
-        if (!fs.existsSync(path.join(__dirname, 'models.json'))) writeJson(path.join(__dirname, 'models.json'), { at: nowIso(), base: ORIGIN, body: models.text.slice(0, 20000) });
         console.log(`✓ #${rec.index} KEY ALINDI: ${String(found.key).slice(0, 22)}… [${made.length} ok / ${COUNT} deneme]`);
       } else {
         rec.status = 'key-unverified';
@@ -237,11 +242,14 @@ async function main() {
       rec.status = 'error';
       rec.error = String(e.message).slice(0, 240);
       log(`  ✖ ${rec.error}`);
+    } finally {
+      // the early-exit `continue`s above must be paced too: a refused register is
+      // exactly when the sign-up endpoint is being rate-limited
+      if (GAP_MS) await sleep(GAP_MS);
     }
     accounts.push(rec);
     if (rec.status !== 'minted') console.log(`✗ #${rec.index} key yok: ${rec.status}${rec.error ? ' — ' + String(rec.error).slice(0, 120) : ''}`);
     writeJson(ACCOUNTS, accounts);
-    if (GAP_MS) await sleep(GAP_MS);
     }
   }
   await Promise.all(Array.from({ length: Math.min(CONC, COUNT) }, () => worker()));

@@ -61,7 +61,7 @@ node src/cli.js verify      # every key in keys.txt is re-tested against the pro
 > 💡 無料枠は Completions.me 側で設定されており、変更される可能性があります。最新の数値は [completions.me](https://completions.me) で確認してください。そして最終判断はツール自身のゲートに委ねてください：
 
 ```bash
-node src/cli.js --verify-only     # every key in keys.txt is re-tested with a real chat call
+node src/cli.js verify            # every key in keys.txt is re-tested with a real chat call
 ```
 
 ## 🤖 モデル — 全 26 個

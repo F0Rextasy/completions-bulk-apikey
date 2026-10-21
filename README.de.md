@@ -61,7 +61,7 @@ node src/cli.js verify      # every key in keys.txt is re-tested against the pro
 > 💡 Die kostenlose Stufe wird von Completions.me festgelegt und kann sich ändern. Prüfe die aktuellen Zahlen auf [completions.me](https://completions.me) — und lass das eigene Gate des Tools entscheiden:
 
 ```bash
-node src/cli.js --verify-only     # every key in keys.txt is re-tested with a real chat call
+node src/cli.js verify            # every key in keys.txt is re-tested with a real chat call
 ```
 
 ## 🤖 Modelle — alle 26
