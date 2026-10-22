@@ -25,6 +25,7 @@
 [![License](https://img.shields.io/badge/license-MIT-6ea8fe?style=for-the-badge)](LICENSE)
 [![Models](https://img.shields.io/badge/models-26%20served-412991?style=for-the-badge)](https://completions.me)
 [![9Router](https://img.shields.io/badge/9Router-connector-8B5CF6?style=for-the-badge)](#-connect-to-9router)
+[![OmniRoute](https://img.shields.io/badge/OmniRoute-connector-8B5CF6?style=for-the-badge)](#-connect-to-omniroute)
 [![X](https://img.shields.io/badge/X-%40bigbullapp-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/bigbullapp)
 
 [🛠 クイックスタート](#-quick-start) · [🎁 無料枠](#-free-tier--how-much-you-get) · [🤖 モデル](#-models--all-26-of-them) · [🧪 API の使い方](#-how-to-use-the-api) · [✅ 検証済み](#-verified-working--every-key-is-tested) · [🧭 仕組み](#-how-it-works) · [🔌 9Router](#-connect-to-9router) · [⚙️ オプション](#️-cli-options) · [🛰️ プロキシ](#️-behind-a-proxy) · [🐞 問題報告](#-issues)
@@ -244,6 +245,23 @@ completions-me/gemini-3-pro-preview
 
 コネクタを更新済みの `keys.txt` に向ければアカウントを追加できます。ノードとそのモデル一覧は変わりません。`node src/launcher.js --connect-9router` はまさにこれを実行し、その前にベース URL とパスワードを尋ねます。
 
+## 🔌 OmniRoute への接続
+
+[OmniRoute](https://omniroute.online) はセルフホスト型の OpenAI 互換ルーターです。Completions.me は OpenAI 互換なので、一度登録すればすべてのキーを使えます：
+
+```bash
+node src/connect-omniroute.js --base http://localhost:20128 --password 123456 --keys-file keys.txt
+```
+
+`keys.txt` の各キーが `completions-me` プロバイダーノードの 1 接続になります（`--api-key <key>` で単一キーのみ登録、`--model <id>` で既定モデルを上書き）。その後、OmniRoute 内でモデルを選択してください：
+
+```
+completions-me/claude-sonnet-4.6
+completions-me/gpt-5.4
+completions-me/gemini-3-pro-preview
+```
+
+コネクタを更新済みの `keys.txt` に向ければアカウントを追加できます。ノードとそのモデル一覧は変わりません。`node src/launcher.js --connect-omniroute` はまさにこれを実行し、その前にベース URL とパスワードを尋ねます。
 ## 🔑 1 つのキーで得られるもの
 
 | | |

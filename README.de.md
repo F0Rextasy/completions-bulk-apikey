@@ -25,6 +25,7 @@
 [![License](https://img.shields.io/badge/license-MIT-6ea8fe?style=for-the-badge)](LICENSE)
 [![Models](https://img.shields.io/badge/models-26%20served-412991?style=for-the-badge)](https://completions.me)
 [![9Router](https://img.shields.io/badge/9Router-connector-8B5CF6?style=for-the-badge)](#-connect-to-9router)
+[![OmniRoute](https://img.shields.io/badge/OmniRoute-connector-8B5CF6?style=for-the-badge)](#-connect-to-omniroute)
 [![X](https://img.shields.io/badge/X-%40bigbullapp-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/bigbullapp)
 
 [🛠 Schnellstart](#-quick-start) · [🎁 Kostenlose Stufe](#-free-tier--how-much-you-get) · [🤖 Modelle](#-models--all-26-of-them) · [🧪 Die API verwenden](#-how-to-use-the-api) · [✅ Verifiziert](#-verified-working--every-key-is-tested) · [🧭 Wie es funktioniert](#-how-it-works) · [🔌 9Router](#-connect-to-9router) · [⚙️ Optionen](#️-cli-options) · [🛰️ Proxys](#️-behind-a-proxy) · [🐞 Probleme](#-issues)
@@ -246,6 +247,23 @@ completions-me/gemini-3-pro-preview
 
 Richte den Connector auf eine aktualisierte `keys.txt`, um weitere Konten hinzuzufügen; der Knoten und seine Modellliste bleiben gleich. `node src/launcher.js --connect-9router` führt genau das aus und fragt zuerst nach Basis-URL und Passwort.
 
+## 🔌 Mit OmniRoute verbinden
+
+[OmniRoute](https://omniroute.online) ist ein selbst gehosteter, OpenAI-kompatibler Router. Completions.me ist OpenAI-kompatibel, also registriere es einmal und nutze jeden Key:
+
+```bash
+node src/connect-omniroute.js --base http://localhost:20128 --password 123456 --keys-file keys.txt
+```
+
+Jeder Key in `keys.txt` wird zu einer Verbindung des Provider-Knotens `completions-me` (`--api-key <key>` registriert stattdessen einen einzelnen Key, `--model <id>` überschreibt den Standard). Wähle dann ein Modell innerhalb von OmniRoute:
+
+```
+completions-me/claude-sonnet-4.6
+completions-me/gpt-5.4
+completions-me/gemini-3-pro-preview
+```
+
+Richte den Connector auf eine aktualisierte `keys.txt`, um weitere Konten hinzuzufügen; der Knoten und seine Modellliste bleiben gleich. `node src/launcher.js --connect-omniroute` führt genau das aus und fragt zuerst nach Basis-URL und Passwort.
 ## 🔑 Was ein Key dir bringt
 
 | | |

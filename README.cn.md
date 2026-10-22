@@ -25,6 +25,7 @@
 [![License](https://img.shields.io/badge/license-MIT-6ea8fe?style=for-the-badge)](LICENSE)
 [![Models](https://img.shields.io/badge/models-26%20served-412991?style=for-the-badge)](https://completions.me)
 [![9Router](https://img.shields.io/badge/9Router-connector-8B5CF6?style=for-the-badge)](#-connect-to-9router)
+[![OmniRoute](https://img.shields.io/badge/OmniRoute-connector-8B5CF6?style=for-the-badge)](#-connect-to-omniroute)
 [![X](https://img.shields.io/badge/X-%40bigbullapp-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/bigbullapp)
 
 [🛠 快速开始](#-quick-start) · [🎁 免费额度](#-free-tier--how-much-you-get) · [🤖 模型](#-models--all-26-of-them) · [🧪 使用 API](#-how-to-use-the-api) · [✅ 已验证](#-verified-working--every-key-is-tested) · [🧭 工作原理](#-how-it-works) · [🔌 9Router](#-connect-to-9router) · [⚙️ 选项](#️-cli-options) · [🛰️ 代理](#️-behind-a-proxy) · [🐞 问题](#-issues)
@@ -246,6 +247,23 @@ completions-me/gemini-3-pro-preview
 
 将连接器指向刷新后的 `keys.txt` 即可添加更多账户；该节点及其模型列表保持不变。`node src/launcher.js --connect-9router` 会直接运行这一流程，并先询问基础 URL 和密码。
 
+## 🔌 连接到 OmniRoute
+
+[OmniRoute](https://omniroute.online) 是一个自托管、兼容 OpenAI 的路由器。Completions.me 兼容 OpenAI，因此只需注册一次即可使用每个密钥：
+
+```bash
+node src/connect-omniroute.js --base http://localhost:20128 --password 123456 --keys-file keys.txt
+```
+
+`keys.txt` 中的每个密钥都会成为 `completions-me` 提供商节点的一个连接（`--api-key <key>` 改为注册单个密钥，`--model <id>` 覆盖默认模型）。然后在 OmniRoute 中选择一个模型：
+
+```
+completions-me/claude-sonnet-4.6
+completions-me/gpt-5.4
+completions-me/gemini-3-pro-preview
+```
+
+将连接器指向刷新后的 `keys.txt` 即可添加更多账户；该节点及其模型列表保持不变。`node src/launcher.js --connect-omniroute` 会直接运行这一流程，并先询问基础 URL 和密码。
 ## 🔑 一个密钥能带来什么
 
 | | |

@@ -25,6 +25,7 @@
 [![License](https://img.shields.io/badge/license-MIT-6ea8fe?style=for-the-badge)](LICENSE)
 [![Models](https://img.shields.io/badge/models-26%20served-412991?style=for-the-badge)](https://completions.me)
 [![9Router](https://img.shields.io/badge/9Router-connector-8B5CF6?style=for-the-badge)](#-connect-to-9router)
+[![OmniRoute](https://img.shields.io/badge/OmniRoute-connector-8B5CF6?style=for-the-badge)](#-connect-to-omniroute)
 [![X](https://img.shields.io/badge/X-%40bigbullapp-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/bigbullapp)
 
 [🛠 Hızlı başlangıç](#-quick-start) · [🎁 Ücretsiz katman](#-free-tier--how-much-you-get) · [🤖 Modeller](#-models--all-26-of-them) · [🧪 API'yi kullanma](#-how-to-use-the-api) · [✅ Doğrulandı](#-verified-working--every-key-is-tested) · [🧭 Nasıl çalışır](#-how-it-works) · [🔌 9Router](#-connect-to-9router) · [⚙️ Seçenekler](#️-cli-options) · [🛰️ Proxy'ler](#️-behind-a-proxy) · [🐞 Sorunlar](#-issues)
@@ -246,6 +247,23 @@ completions-me/gemini-3-pro-preview
 
 Daha fazla hesap eklemek için bağlayıcıyı yenilenmiş bir `keys.txt` dosyasına yönlendirin; düğüm ve model listesi aynı kalır. `node src/launcher.js --connect-9router` tam olarak bunu çalıştırır ve önce temel URL ile parolayı sorar.
 
+## 🔌 OmniRoute'a bağlanma
+
+[OmniRoute](https://omniroute.online) kendi kendine barındırılan, OpenAI uyumlu bir yönlendiricidir. Completions.me OpenAI uyumludur, bu yüzden bir kez kaydedin ve her anahtarı kullanın:
+
+```bash
+node src/connect-omniroute.js --base http://localhost:20128 --password 123456 --keys-file keys.txt
+```
+
+`keys.txt` içindeki her anahtar, `completions-me` sağlayıcı düğümünün bir bağlantısı olur (`--api-key <key>` bunun yerine tek bir anahtar kaydeder, `--model <id>` varsayılanı geçersiz kılar). Ardından OmniRoute içinde bir model seçin:
+
+```
+completions-me/claude-sonnet-4.6
+completions-me/gpt-5.4
+completions-me/gemini-3-pro-preview
+```
+
+Daha fazla hesap eklemek için bağlayıcıyı yenilenmiş bir `keys.txt` dosyasına yönlendirin; düğüm ve model listesi aynı kalır. `node src/launcher.js --connect-omniroute` tam olarak bunu çalıştırır ve önce temel URL ile parolayı sorar.
 ## 🔑 Bir anahtar size ne kazandırır
 
 | | |

@@ -25,6 +25,7 @@
 [![Licencia](https://img.shields.io/badge/license-MIT-6ea8fe?style=for-the-badge)](LICENSE)
 [![Modelos](https://img.shields.io/badge/models-26%20served-412991?style=for-the-badge)](https://completions.me)
 [![9Router](https://img.shields.io/badge/9Router-connector-8B5CF6?style=for-the-badge)](#-connect-to-9router)
+[![OmniRoute](https://img.shields.io/badge/OmniRoute-connector-8B5CF6?style=for-the-badge)](#-connect-to-omniroute)
 [![X](https://img.shields.io/badge/X-%40bigbullapp-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/bigbullapp)
 
 [🛠 Inicio rápido](#-quick-start) · [🎁 Nivel gratuito](#-free-tier--how-much-you-get) · [🤖 Modelos](#-models--all-26-of-them) · [🧪 Usar la API](#-how-to-use-the-api) · [✅ Verificado](#-verified-working--every-key-is-tested) · [🧭 Cómo funciona](#-how-it-works) · [🔌 9Router](#-connect-to-9router) · [⚙️ Opciones](#️-cli-options) · [🛰️ Proxies](#️-behind-a-proxy) · [🐞 Problemas](#-issues)
@@ -246,6 +247,23 @@ completions-me/gemini-3-pro-preview
 
 Apunta el conector a un `keys.txt` actualizado para añadir más cuentas; el nodo y su lista de modelos siguen igual. `node src/launcher.js --connect-9router` ejecuta exactamente esto y pregunta primero por la URL base y la contraseña.
 
+## 🔌 Conectar con OmniRoute
+
+[OmniRoute](https://omniroute.online) es un router autoalojado y compatible con OpenAI. Completions.me es compatible con OpenAI, así que regístralo una vez y usa todas las claves:
+
+```bash
+node src/connect-omniroute.js --base http://localhost:20128 --password 123456 --keys-file keys.txt
+```
+
+Cada clave de `keys.txt` se convierte en una conexión del nodo de proveedor `completions-me` (`--api-key <key>` registra una sola clave en su lugar, `--model <id>` anula el valor predeterminado). Luego elige un modelo dentro de OmniRoute:
+
+```
+completions-me/claude-sonnet-4.6
+completions-me/gpt-5.4
+completions-me/gemini-3-pro-preview
+```
+
+Apunta el conector a un `keys.txt` actualizado para añadir más cuentas; el nodo y su lista de modelos siguen igual. `node src/launcher.js --connect-omniroute` ejecuta exactamente esto y pregunta primero por la URL base y la contraseña.
 ## 🔑 Qué obtienes con una clave
 
 | | |
