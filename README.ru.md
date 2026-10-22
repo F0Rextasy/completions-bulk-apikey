@@ -127,6 +127,7 @@ curl https://completions.me/api/v1/chat/completions \
 ## 🛠 Быстрый старт
 
 ```bash
+
 # clone this repository (or download the ZIP), then:
 cd completions-bulk-apikey
 
