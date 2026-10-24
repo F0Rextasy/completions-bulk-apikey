@@ -16,6 +16,7 @@
  * never leaves state behind in this process.
  */
 
+const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 
@@ -25,6 +26,32 @@ const TASKS = {
   verify: { file: 'verify.js', note: 're-check keys that are already on disk' },
   '9router': { file: 'connect-9router.js', note: 'register the keys in keys.txt with a 9Router instance' },
 };
+
+/**
+ * `--dry`: the resolved plan, then exit 0 — the dispatcher never spawns a task
+ * module, so nothing is written and no request is sent.
+ */
+if (process.argv.includes('--dry')) {
+  const dryArgv = process.argv.slice(2);
+  const val = (name, dflt) => {
+    const i = dryArgv.indexOf(name);
+    return i >= 0 && dryArgv[i + 1] && !dryArgv[i + 1].startsWith('--') ? dryArgv[i + 1] : dflt;
+  };
+  const poolFile = val('--pool', 'proxies.txt');
+  const exits = (() => {
+    try {
+      return fs.readFileSync(path.resolve(__dirname, '..', poolFile), 'utf8').split(/\r?\n/).filter((l) => l.trim() && !l.startsWith('#')).length;
+    } catch (e) {
+      return 0;
+    }
+  })();
+  console.log('completions dry run — nothing is written and no request is sent.');
+  console.log(`  task     ${dryArgv[0] && !dryArgv[0].startsWith('--') ? dryArgv[0] : 'mint'}`);
+  console.log(`  count    ${val('--count', '3')} key(s)`);
+  console.log(`  pool     ${exits ? `${exits} exit(s) from ${poolFile}` : `direct (no usable exit in ${poolFile})`}`);
+  console.log('  keys     keys.txt · verify writes dead keys to keys-dead.txt');
+  process.exit(0);
+}
 
 function help() {
   console.log('completions-bulk-apikey — one account per key, live-verified\n');
@@ -40,7 +67,10 @@ function help() {
 }
 
 const argv = process.argv.slice(2);
-const task = argv[0] === '--connect-9router' ? '9router' : argv[0];
+// A leading flag IS the task (`--count 3` = mint), so only a real task name is dropped.
+const task = argv[0] === '--connect-9router' ? '9router'
+  : argv[0] && argv[0].startsWith('--') && !['--help', '-h'].includes(argv[0]) ? 'mint'
+    : argv[0];
 if (!task || task === 'help' || task === '--help' || task === '-h') {
   help();
   process.exit(0);
@@ -51,7 +81,8 @@ if (!entry) {
   help();
   process.exit(1);
 }
-const child = spawnSync(process.execPath, [path.join(__dirname, entry.file), ...argv.slice(1)], {
+const childArgs = (argv[0] === task || argv[0] === '--connect-9router') ? argv.slice(1) : argv;
+const child = spawnSync(process.execPath, [path.join(__dirname, entry.file), ...childArgs], {
   windowsHide: true,
   cwd: path.resolve(__dirname, '..'),
   stdio: 'inherit',

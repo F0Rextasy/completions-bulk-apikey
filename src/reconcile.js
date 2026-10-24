@@ -10,21 +10,7 @@
  */
 const fs = require('fs');
 const path = require('path');
-/** The shared workspace engine is not part of this repo: a fresh clone must not
- *  crash on import, so its absence is explained at the first call that needs it. */
-const engine = (() => {
-  try {
-    return require('../../_community/lib');
-  } catch (e) {
-    const hint = 'this tool needs the workspace engine (../../_community/lib) — a fresh clone of this repo does not ship it';
-    const unavailable = () => {
-      console.error(hint);
-      process.exit(2);
-    };
-    return { loadExits: unavailable, ExitPool: unavailable, req: unavailable, nowIso: unavailable };
-  }
-})();
-const { loadExits, ExitPool, req, nowIso } = engine;
+const { loadExits, ExitPool, req, nowIso } = require('./vendor/lib');
 
 const argv = process.argv.slice(2);
 if (argv.includes('--help') || argv.includes('-h')) {

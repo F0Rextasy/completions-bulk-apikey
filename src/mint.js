@@ -1,13 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-// Re-runnable mint for this provider; the gates and the engine live in the
-// workspace (../../_community/provider-cli.js + ../config.json), not in this repo.
-// --preset=turbo|balanced|safe (and every other flag) is forwarded to the engine
-// as-is — the run-shape presets live in the shared provider-cli engine.
-process.argv.push('--name', require('path').basename(require('path').resolve(__dirname, '..')));
-try {
-  require('../../_community/provider-cli.js');
-} catch (e) {
-  console.error('mint: this entry point needs the workspace engine (../../_community/provider-cli.js) — a fresh clone of this repo does not ship it');
-  process.exit(2);
-}
+// Re-runnable mint for this provider — the same engine the `mint` task of
+// src/cli.js runs (`--count N`, `--pool FILE`, `--preset=turbo|balanced|safe`,
+// and every other flag is parsed by src/mint-node.js).
+require('./mint-node.js');

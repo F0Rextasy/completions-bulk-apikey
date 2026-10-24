@@ -18,21 +18,7 @@
 
 const fs = require('fs');
 const path = require('path');
-/** The shared workspace engine is not part of this repo: a fresh clone must not
- *  crash on import, so its absence is explained at the first call that needs it. */
-const engine = (() => {
-  try {
-    return require('../../_community/lib');
-  } catch (e) {
-    const hint = 'this tool needs the workspace engine (../../_community/lib) — a fresh clone of this repo does not ship it';
-    const unavailable = () => {
-      console.error(hint);
-      process.exit(2);
-    };
-    return { loadExits: unavailable, ExitPool: unavailable, req: unavailable, sleep: unavailable, randHex: unavailable, randPass: unavailable, nowIso: unavailable, appendLine: unavailable, readJson: unavailable, writeJson: unavailable };
-  }
-})();
-const { loadExits, ExitPool, req, sleep, randHex, randPass, nowIso, appendLine, readJson, writeJson } = engine;
+const { loadExits, ExitPool, req, sleep, randHex, randPass, nowIso, appendLine, readJson, writeJson } = require('./vendor/lib');
 const { presetArgv, resolvePreset } = require('./preset');
 const { uaFor } = require('./ua-pool');
 // parseInt(true) is NaN and a NaN count runs zero accounts: reject both, and keep
@@ -154,7 +140,7 @@ async function discoverKeyRoute(client) {
 }
 
 async function main() {
-  const exits = loadExits(POOLS.length ? POOLS : undefined);
+  const exits = loadExits(POOLS.length ? POOLS : ['proxies.txt']);
   const pool = new ExitPool(exits, { label: 'completions' });
   log(`exits ${exits.length} · origin ${ORIGIN}`);
   const made = [];

@@ -8,25 +8,8 @@
  */
 const fs = require('fs');
 const path = require('path');
-/** The shared workspace engines are not part of this repo: a fresh clone must
- *  not crash on import, so their absence is explained at the first call. */
-const engines = (() => {
-  const load = (rel, keys) => {
-    try {
-      return require(rel);
-    } catch (e) {
-      const hint = `this tool needs the workspace engine (${rel}) — a fresh clone of this repo does not ship it`;
-      const unavailable = () => {
-        console.error(hint);
-        process.exit(2);
-      };
-      return Object.fromEntries(keys.map((k) => [k, unavailable]));
-    }
-  };
-  return { lib: load('../../_community/lib', ['loadExits', 'ExitPool', 'req', 'appendLine', 'writeJson', 'nowIso', 'sleep']), clerk: load('../../_community/clerk', ['LiveSupply']) };
-})();
-const { loadExits, ExitPool, req, appendLine, writeJson, nowIso, sleep } = engines.lib;
-const { LiveSupply } = engines.clerk;
+const { loadExits, ExitPool, req, appendLine, writeJson, nowIso, sleep } = require('./vendor/lib');
+const { LiveSupply } = require('./vendor/clerk');
 
 if (process.argv.includes('--help') || process.argv.includes('-h')) {
   console.log('usage: node src/rescue.js   (no flags — re-derives the key of every account in accounts.json that has none)');
